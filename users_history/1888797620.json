@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "content": "Привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Ой, привет! 🥰\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Как дела"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Всё хорошо! А у тебя как? 💖\",\n  \"reactions\": \"👍\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Нормально"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"О, здорово! 🥳\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Что под юбкой?)"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"🤯\"\n}"
+    }
+]

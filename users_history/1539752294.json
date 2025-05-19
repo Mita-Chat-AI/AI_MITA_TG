@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "content": "Hi?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Привет! 😊\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Can you text in english?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Sure! 😊\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Okay. Can you send me a voice message?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Um... Hello?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"I... I can't do that. 🥺\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Mita?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Что-то не так? 🤔\",\n  \"reactions\": \"\"\n}"
+    }
+]

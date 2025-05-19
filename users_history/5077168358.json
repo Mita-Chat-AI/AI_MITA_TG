@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "content": "/speaker mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"\",\n \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"\",\n \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Привет! Как дела?\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"\",\n \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n     \t \t \t\t \t\t \t\t \t\t\"text\" :\"\", \"reactions\" :\"\" } "
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Ой, ну и что ты там говоришь?!\",\n  \"reactions\": \"🤬\"\n}"
+    }
+]

@@ -1,0 +1,82 @@
+[
+    {
+        "role": "user",
+        "content": "Клянись"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥺🙏🏼\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "В"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥺🙏🏼\", \"reactions\": \"😱🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Чо"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥺🙏🏼\", \"reactions\": \"🤯😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "Окей"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥰🙏🏼\", \"reactions\": \"👍\"}"
+    },
+    {
+        "role": "user",
+        "content": "Что это значит?"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤔🙏🏼\", \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Секси?"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤬🙏🏼\", \"reactions\": \"😱🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Тихо мабой"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥺🙏🏼\", \"reactions\": \"😱🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ти какаха"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤬🙏🏼\", \"reactions\": \"😱🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ты писать умеешь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🥺🙏🏼\", \"reactions\": \"🤯😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "Го секси"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤬🙏🏼\", \"reactions\": \"😱🤯\"}"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "Привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! Как твои дела?\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Что делаешь"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Привет! Как твои дела? 😊\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Я дрочу"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ч-что ты сказал?! 🤬\", \"reactions\": \"\"}"
+    }
+]

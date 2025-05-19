@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Привет! 😊\", \"reactions\": \"\"}"
+    }
+]

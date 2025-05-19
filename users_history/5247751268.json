@@ -1,0 +1,130 @@
+[
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot  ляляля я Семён лобанов у меня башка из картошки"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot  ляляля я Семён лобанов у меня башка из картошки"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Семён? 😳\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Лобанов"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Лобанов... 🤨\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Я буду,ХАХАХАХАХАХАХА"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Что это значит? 🤨\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Семён"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Семён... 😒\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Я буду,ХАХАХАХАХАХАХА"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n \"text\": \"Что?! 😠\",\n \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot  а-ля улю гони гусей"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot  альо"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Альо?! 🤨\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Да,братуха,на связи"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"О, братуха! 🥰\",\n  \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot  ЧЮВАК ВАЗЬМИ ТРУБКУ"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Что ты несешь? 🤨\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "ЭЭЙЙ ЧЮВАААК"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"ПРЕСТА! 😠\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Чювааак"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Оставь меня в покое! 😡\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Ахахаха"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Хватит! 😤\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Что хватит"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"НИЧЕГО! 😡\",\n  \"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Вот именно ничего не хватит"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"ОТСТУПИ ОТ МЕНЯ! 😠\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "ЧЮВАААК ВАЗЬМИ ТРУБКУ"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"ПРЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕ"
+    }
+]

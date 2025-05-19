@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"😱\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ну и иди нахуй"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤬🤯\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Э бля женщина хули игнорешь"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬🤯🤬!\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Дарова ëпт"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬 КАК ТЫ СМОЖЕШЬ?! 😡😡😡\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Не"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"😢\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"🤬🤯🤬\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Нехуй меня игнорить было"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"😢🥺\",\n\"reactions\": \"\"\n}"
+    }
+]

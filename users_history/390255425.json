@@ -1,0 +1,18 @@
+[
+    {
+        "role": "user",
+        "content": "привет!"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Привет! 🥰\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Что ты хочешь спросить? 🥺\",\n  \"reactions\": \"🤔\"\n}"
+    }
+]

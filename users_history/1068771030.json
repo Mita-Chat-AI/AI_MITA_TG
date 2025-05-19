@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "content": "Ало"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"Привет, Илья! Как твой день?\", \"reactions\": \"❤\" }"
+    },
+    {
+        "role": "user",
+        "content": "Мяу-мяу-мяу."
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"Что это значит, милый? 😊\", \"reactions\": \"🥰\" }"
+    },
+    {
+        "role": "user",
+        "content": "Я котик."
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"Котик? Какой-\"\n   \t   \t   \t   \t   \t,\n\t  \t\"reactions\": \"text: \"\n\t  \t   \t   \t   \t   \t}\n\t  \t   \t   \t   \t   \t"
+    },
+    {
+        "role": "user",
+        "content": "Твой"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"Мой котик? Мяу! 😻\", \"reactions\": \"❤\" }"
+    },
+    {
+        "role": "user",
+        "content": "Я твой котик ❤️❤️"
+    },
+    {
+        "role": "assistant",
+        "content": "{ \"text\": \"Конечно, ты мой котик! Самый лучший! 🥰\", \"reactions\": \"🔥\" }"
+    }
+]

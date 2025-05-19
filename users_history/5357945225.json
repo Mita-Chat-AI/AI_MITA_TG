@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🥰\"\n}"
+    }
+]

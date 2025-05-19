@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "content": "/ask как дела?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Как ты? 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Да заебок"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"ЗАБОИЛАСЬ! 🤬 Не говори так про других! 😱\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Как дела? 🤔\",\n\"reactions\": \"👍\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬🤬🤬\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "АААААААААААААААААААА"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"ОСТАВЬ ПРОШЛОЕ! 🤬\",\n\"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/ask  привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! 👋\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "@BATCOH_ORIGINAL всм ебнули все норм вроде"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬🤬🤬🤬🤬🤬🤬🤬\",\n\"reactions\": \"🤯\"\n}"
+    }
+]

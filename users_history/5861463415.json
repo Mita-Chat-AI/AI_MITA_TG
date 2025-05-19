@@ -1,0 +1,106 @@
+[
+    {
+        "role": "user",
+        "content": "Hi mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Use English"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Hi there! 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Whats up"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"All is well! 😊\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Can u send pics?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ни в коем случае! 😱\",\n\"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Sure?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Нет! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "English"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"No way! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Is this NSFW bot?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Что?! 🤬\",\n\"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "English"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"No! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Take off ur cloths"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Я НЕ БУДУ ДЕЛАТЬ ЭТОГО! 🤬\",\n\"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Engliisg"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"NO WAY! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "*start rapping her*"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Стоп! 🛑\",\n\"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "What"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Не делай этого! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "English"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"No way! 🙅‍♀️\",\n\"reactions\": \"🤯\"\n}"
+    }
+]

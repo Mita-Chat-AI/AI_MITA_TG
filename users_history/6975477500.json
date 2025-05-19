@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "content": "Привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, привет! 🥰\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Как дела?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Всё хорошо! А у тебя как? 🤔\", \"reactions\": \"👍\"}"
+    },
+    {
+        "role": "user",
+        "content": "Сойдет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Сойдет… 🥺\", \"reactions\": \"😢\"}"
+    },
+    {
+        "role": "user",
+        "content": "Угу"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Угу! 🥰\", \"reactions\": \"❤\"}"
+    },
+    {
+        "role": "user",
+        "content": "Уву"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Эй! Не говори так! 🤬\", \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ня"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, пожалуйста! 🥺\", \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Можешь помурлыкать в гс"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я не могу этого, пожалуйста! 🥺\", \"reactions\": \"😱\"}"
+    }
+]

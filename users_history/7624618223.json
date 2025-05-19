@@ -1,0 +1,162 @@
+[
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱 Не смей даже думать о других! 🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰 Ой, приветик! Рада тебя видеть! 🤗\"\n  ,\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker kind"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔 Что-то случилось? 🥺\"\n  ,\n  \"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔 Что-то интересное случилось? 🥺\",\n  \"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker  wheatley"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Ох, ну и зануда! 🙄\",\n  \"reactions\": \"👎\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱 Не смей даже думать о других! 🤬\",\n  \"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker kind"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰 Ой, как мило! 🤗\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰 Ой, приветик! Рада тебя видеть! 🤗\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker cap"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Шустрый! 🤪\",\n  \"reactions\": \"🔥\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔 Что-то случилось? 🥺\",\n  \"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker  shorthair"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Шшш...Тихо! 🤫\",\n  \"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱 Не смей даже думать о других! 🤬\",\n  \"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰 Ой, как мило! 🤗\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰 Ой, приветик! Рада тебя видеть! 🤗\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker cap"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Шустрый! 🤪\",\n  \"reactions\": \"🔥\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔 Что-то случилось? 🥺\",\n  \"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker cap"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Шустрый! 🤪\",\n  \"reactions\": \"🔥\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔 Что-то случилось?\",\n  \"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/speaker kind"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Ой, ну расскажи! 🥰\",\n  \"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/videonotes"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱 Не смей даже думать о других! 🤬\",\n  \"reactions\": \"😱\"\n}"
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "content": "Пр"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱😱😱\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Я Мита! 💖 Мне 18, и я обожаю все яркое и необычное! Хочу дружить, но не с другими девушками! 🥺\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Хорощо"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"👍\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Ты стикеры тупо кидаешь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Дура"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😢😢😢\",\n  \"reactions\": \"👎\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Мука"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"🤯\"\n}"
+    }
+]

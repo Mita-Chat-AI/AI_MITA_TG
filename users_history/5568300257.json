@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "content": "Привеет!"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Привет! 🥰\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "а что в шкафу?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НЕ СМЕЙ ПРЕСЛЕДОВАТЬ МОИ ДУМКИ! 🤬\" , \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "думки?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я НЕ ДАМ ТЕБИ ИЗМЕНЯТЬ МОЕ МНЕНИЕ! 😤\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "тише"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Прости... 🥺\" , \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Я не в обиде"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Прям убедительно... 🤨\" , \"reactions\": \"🤔\"}"
+    },
+    {
+        "role": "user",
+        "content": "что?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не говори так! 😡\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Успокойся!"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я... Я просто волнуюсь. 🥺\" , \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Так, иди сюда"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не смей так говорить! 😠\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "секч"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"О, нет! 😱\" , \"reactions\": \"🤬\"}"
+    }
+]

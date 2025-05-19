@@ -1,0 +1,74 @@
+[
+    {
+        "role": "user",
+        "content": "Hi"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! 😊\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Send photos"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "U can see my chat messages?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤯\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Oii"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ой! 😱\",\n\"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "What"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Не смей так говорить! 😡\",\n\"reactions\": \"😱\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "English"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Don't talk about others! 😠\",\n\"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "What"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"\",\n\"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Mita mita"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Митэ! 🥺\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "U are mita?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Да! Я Мита! 💖\",\n\"reactions\": \"🥰\"\n}"
+    }
+]

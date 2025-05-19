@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "content": "Лол"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Иди"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🥺\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "18"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤔\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "18+"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬🤬🤬\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Давай 18+"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤯🤯🤯\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Трах"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"😱😱😱\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Ты умеешь разговаривать"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Алё да или нет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤔\",\n\"reactions\": \"\"\n}"
+    }
+]

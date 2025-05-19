@@ -1,0 +1,10 @@
+[
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\" :\"( 😴 Мне кажется, что с. Мне: \"\n  ,\n \t\"reactions\" :\" А .! 🀀 0: ⤤{ !:  !\" }\n \t  \t \t \t \t \t \t \t \t "
+    }
+]

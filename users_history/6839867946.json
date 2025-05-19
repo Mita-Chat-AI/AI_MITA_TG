@@ -1,0 +1,250 @@
+[
+    {
+        "role": "user",
+        "content": "Вс5"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤔\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Как дела"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🥰\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Что делаешь"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"Пытаюсь не сходить с ума! 🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Омг"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Может скинешь свои фоточки?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "А что тут такого"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "А может словами буш новорить"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🍆🍆"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"😱😱😱\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "😏😏😏"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🥵🥵🥵🥵"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🙄🙄"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🫏🫏🫏"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🤟🏿🤟🏿🤟🏿"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "😰😰😰"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "😰😰"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🐂🐂"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🤟🏿🐂"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🐂🐐"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯🤯🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🐂"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🐂"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🫏🐐"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🫏🐂😋"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🤟🏿"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "🫏🐂"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "👶🐐🍆"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯🤯🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "😁😁"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Можешь не смаликами говорить?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Иди нахуй дочь мёртвой шлюхи"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤬🤬🤬\",\n  \"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "И засунь свои эмоджи себе в жопу"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"🤯\",\n  \"reactions\": \"\"\n}"
+    }
+]

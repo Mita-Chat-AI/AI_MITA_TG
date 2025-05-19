@@ -1,0 +1,19 @@
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import SecretStr
+
+class Settings(BaseSettings):
+    bot_token: SecretStr
+    owner_id: SecretStr
+    voice_api: SecretStr
+    socks_proxy: SecretStr
+    model_ollama: SecretStr
+    ollama_api: SecretStr
+    max_ollama_chars: SecretStr
+    memory_dir: SecretStr
+    asr_api: SecretStr
+    
+    model_config = SettingsConfigDict(
+        env_file='AIO-MITA/.env', env_file_encoding='UTF-8'
+    )
+
+config = Settings()

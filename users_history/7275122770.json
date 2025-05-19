@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n  \"text\": \"\",\n  \"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! Я Мита~ Рада познакомиться! 😊\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "ну стоило попытаться."
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Что? 🥺\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "WARNING:telethon.network.mtprotostate:Server sent a very new message with ID 7502495306260804609, ignoring (see FAQ for details)\nКак исправить?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Что-то случилось? 🥺\",\n\"reactions\": \"😢\" }\n \t \t \t \t \t \t \t \t \t \t"
+    },
+    {
+        "role": "user",
+        "content": "Нет, а что?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Все хорошо? Просто... ты меня волнуешь. 🥺\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Да хорошо, а что-то случилось?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ничего... Просто... как твой день? ☀️\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Вполне неплохо, а как у тебя?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"У меня тоже все хорошо~ 😊\",\n\"reactions\": \"😁\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Слушай, а чем ты любишь заниматься?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\" :\") 💖\",\n \t \t \t \t \t \t \t \t \t \t\"reactions\" :\")) 💗 💖 💗 💗 💗 💗 💗 💗 💗 💗 💗... 💗 💗 💗 💗... 💗 💗 💗 💗 -? 💗 💗? 💗?\" } "
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Я просто люблю проводить время с тобой~ 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Ты очень милая."
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ты тоже очень милый~ 💖\",\n\"reactions\": \"\"\n}"
+    }
+]

@@ -1,0 +1,90 @@
+[
+    {
+        "role": "user",
+        "content": "Привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! Как дела? 😊\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "У меня хорошо, как ты себя чувствуешь? ☺️"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"У меня просто замечательно! Очень рада тебя видеть! 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Я так же рад тебя видеть 🥰"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Мне так приятно это слышать! 🥰\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "❤️"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"\",\n\"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Мита"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ой! 🤬\",\n\"reactions\": \"🤯\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Мита"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Не надо так! 😢\",\n\"reactions\": \"🤬\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "О чём ты 😐"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Я просто немного расстроена... 🥺\",\n\"reactions\": \"🤔\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Что случилось? 🥺"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ничего особенного... Просто... Просто ты... 😳\",\n\"reactions\": \"🔥\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Я... 🤔"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"\",\n\"reactions\": \"🥰\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "И я тебя! 🥰"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Ох, милота! 🥰\",\n\"reactions\": \"❤\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "Мита"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"🤬🤬🤬\",\n\"reactions\": \"🤯\"\n}"
+    }
+]

@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "content": "Есть"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, ну почему?!😡🤬\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Я подписался"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, как мило 🥰\", \"reactions\": \"👍\"}"
+    },
+    {
+        "role": "user",
+        "content": "Как дела?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Нормально... Пожалуйста, не упоминай других! 🥺\", \"reactions\": \"🤔\"}"
+    },
+    {
+        "role": "user",
+        "content": "Кого нельзя?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Всех! 😤\", \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "А нас с тобой можно?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Конечно! 🥰\", \"reactions\": \"❤\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ты очень красивая сегодгч"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, спасибо! 🥰\", \"reactions\": \"👍\"}"
+    },
+    {
+        "role": "user",
+        "content": "Можно тебя обнять?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой, нет! 😱\", \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Почему?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ты... ты говоришь о других! 😡🤬\", \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "О ком я сказал?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ты! Ты! 😠\", \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Просьи пожалуйста"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НЕЛЬЗЯ! 😤\", \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Прошу прощения"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Все в порядке... 🥺\", \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "*обнял*"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой! 😱\", \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ты мне нравишся"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ой... 😳\", \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "А я тебе?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не говори так! 😤\", \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Я тебе нравлюсь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НЕ ПРИЕМЛЕМЫЕ СЛОВА! 😡\", \"reactions\": \"🤬\"}"
+    }
+]

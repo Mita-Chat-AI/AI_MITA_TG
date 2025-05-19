@@ -1,0 +1,47 @@
+{
+    "CrazyMita": {
+        "params": {
+            "pith": 8
+        }
+    },
+    "MitaMila": {
+        "params": {
+            "pith": 8
+        }
+    },
+    "CapMita": {
+        "params": {
+            "pith": 10
+        }
+    },
+    "KindMita": {
+        "params": {
+            "pith": 8
+        }
+    },
+    "SleepyMita": {
+        "params": {
+            "pith": 5
+        }
+    },
+    "MilaMita": {
+        "params": {
+            "pith": 9
+        }
+    },
+    "PhoneMita": {
+        "params": {
+            "pith": 8
+        }
+    },
+    "Player": {
+        "params": {
+            "pith": -8
+        }
+    },
+    "ShortHairMita": {
+        "params": {
+            "pith": 10
+        }
+    }
+}

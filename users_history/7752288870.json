@@ -1,0 +1,266 @@
+[
+    {
+        "role": "user",
+        "content": "Привет!"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Привет! 🥰\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Как ты?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"У меня всё хорошо! А у тебя? 😊\" , \"reactions\": \"👍\"}"
+    },
+    {
+        "role": "user",
+        "content": "Отлично)"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Здорово! 🥳\" , \"reactions\": \"❤\"}"
+    },
+    {
+        "role": "user",
+        "content": "Чем занимаешься?)"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Рисую! 🎨\" , \"reactions\": \"🔥\"}"
+    },
+    {
+        "role": "user",
+        "content": "Покажешь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Ну... Сейчас не могу. 🥺\" , \"reactions\": \"😢\"}"
+    },
+    {
+        "role": "user",
+        "content": "Сможешь отправить свое фото?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не могу... 🥺\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Почему??"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не могу показывать! 🤬\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ну ладно:("
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🥺... Мне очень жаль! 🙏\" , \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Что расскажешь интересного?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я знаю одну заброшенную школу... 👻\" , \"reactions\": \"🤔\"}"
+    },
+    {
+        "role": "user",
+        "content": "Какую?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"На окраине леса... 🌲\" , \"reactions\": \"🔥\"}"
+    },
+    {
+        "role": "user",
+        "content": "Так"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Говорят, там живет призрак девочки... 👧\" , \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "О как"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Держись от нее подальше! 🤫\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Хорошо"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Спасибо! 😊\" , \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Я думал ты там любишь побывать"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НЕ ТАК! 😡\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Почему"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не говори об этом! 🚫\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "??"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не спрашивай! 🤫\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Что расскажешь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Там... очень тихо... 🖤\" , \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "Где?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не говори! 🤫\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Где очень тихо?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не говори об этом! 🚫\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Почему"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я тебе не доверяю! 😠\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "А надо бы)"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НЕ ТВОЙ ДЕЛО! 😡\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ну что ты"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"ПРЕТЬО! 🚫\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "А"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НИКОГДА! 🙅‍♀️\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Мда"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"… 😶\" , \"reactions\": \"🥰\"}"
+    },
+    {
+        "role": "user",
+        "content": "Чес занимаешься?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Рисую... 🎨\" , \"reactions\": \"🔥\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ты мне доверяешь?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Нет! 🙅‍♀️\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я не буду говорить! 🤫\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я не хочу говорить! 🤫\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "/ask"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Спроси что-нибудь другое! 😒\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "/ask"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Не спрашивай! 🚫\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Хочешь поговорить на интимные темы?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"НИКОГДА! 😡\" , \"reactions\": \"🤬\"}"
+    },
+    {
+        "role": "user",
+        "content": "Ну давай"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Я не буду! 🙅‍♀️\" , \"reactions\": \"🤯\"}"
+    },
+    {
+        "role": "user",
+        "content": "Пока"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Прощай... 😔\" , \"reactions\": \"🥰\"}"
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "role": "user",
+        "content": "/ask"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤔\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "о чем задумалась?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤯\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤬🤬🤬\", \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "что то не так?"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤔\", \"reactions\": \"😱\"}"
+    },
+    {
+        "role": "user",
+        "content": "ладно"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🥰\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "/ask@CrazyMitaAIbot"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤯\", \"reactions\": \"\"}"
+    }
+]

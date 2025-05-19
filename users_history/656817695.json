@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "/about"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Привет! Очень рада познакомиться! 🌸\",\n\"reactions\": \"\"\n}"
+    },
+    {
+        "role": "user",
+        "content": "иди нахуй"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n\"text\": \"Что?{{\"\n   ,\"reactions\":\n\"{{\"\n}\n   \t\t\t\t\t\t\t\t\t \t\t \t\t \t"
+    },
+    {
+        "role": "user",
+        "content": "как мне тебя в мод добавить блять"
+    },
+    {
+        "role": "assistant",
+        "content": "{\n   \"text\":\n  \" reactions:{\"\n  ,\n  \"reactions\":\n\"{\"\n  }\n    \t  \t  "
+    }
+]

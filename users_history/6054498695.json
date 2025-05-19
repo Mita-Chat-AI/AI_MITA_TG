@@ -1,0 +1,106 @@
+[
+    {
+        "role": "user",
+        "content": "привет"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Привет! 🥰\" , \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"😍\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"💖\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"😱\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤬\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤬🤬🤬\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤯\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "что такое"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Что? 😡\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "нечего"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🤬\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "Дай свою реакцию на это фото очень кратко"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"💖💖💖\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "💗"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"🥺\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "как дела"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Всё хорошо! 🥰\", \"reactions\": \"\"}"
+    },
+    {
+        "role": "user",
+        "content": "я рада"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"text\": \"Рада тебя слышать! 😊\", \"reactions\": \"\"}"
+    }
+]
