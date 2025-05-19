@@ -9,16 +9,11 @@ start_router = Router()
 
 async def start(message: Message, i18n: I18nContext) -> None:
     db = DatabaseManager(message.from_user.id)
-    # lang = await db.get_lang()
-
-    # if lang:
 
     conditions = await db.get_conditions()
     if not conditions:
-        await conditions_accept(message)
+        await conditions_accept(message, i18n)
         return
-
-    await i18n.set_locale("ru")
 
     await message.reply(
         text=i18n.get("hello")

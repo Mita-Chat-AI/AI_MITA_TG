@@ -38,18 +38,20 @@ async def cmd_lang(message: Message, i18n: I18nContext):
 
 @i18n_router.message(CommandStart())
 async def cmd_lang(message: Message, i18n: I18nContext):
-    # db = DatabaseManager(message.from_user.id)
+    db = DatabaseManager(message.from_user.id)
+    await db.set_user()
 
     # print(await db.get_lang())
     # print(message.from_user.language_code)
 
     # if message.from_user.language_code == 'ru':
     #     print(1)
-    #     if await db.get_lang() == "null":
-    #         print(2)
-    #         await message.reply(
-    #             text=i18n.get("cur-lang", language=i18n.locale), reply_markup=lang_kb.reply_markup()
-    #         )
-    # else:
+    if await db.get_lang() == "null":
+        print(2)
+        await message.reply(
+            text=i18n.get("cur-lang", language=i18n.locale), reply_markup=lang_kb.reply_markup()
+        )
+        return
+    else:
         await start(message, i18n)
 

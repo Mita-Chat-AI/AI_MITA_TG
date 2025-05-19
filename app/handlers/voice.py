@@ -13,6 +13,8 @@ from ..database.requests import DatabaseManager
 from ..services.voice_person import VoicePerson
 from ..utils.utils import remove_unwanted_chars
 
+from aiogram_i18n import I18nContext
+
 class IsSendVoice(StatesGroup):
     is_send_voice =  State()
 
