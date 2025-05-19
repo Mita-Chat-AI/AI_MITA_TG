@@ -3,3 +3,6 @@ __pycache__
 .env
 alembic
 db.sqlite
+train.parquet
+11.parquet
+output.json
