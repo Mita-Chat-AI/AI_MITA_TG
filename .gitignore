@@ -2,7 +2,7 @@ venv/
 __pycache__
 .env
 alembic
-db.sqlite
+db.sqlite3
 train.parquet
 11.parquet
 output.json
