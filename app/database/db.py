@@ -82,7 +82,7 @@ class UserModel(BaseModel):
     person_voice: str = "CrazyMita"
     is_history: bool = True
     voice_mode: bool = False
-    lang: str = "ru"
+    lang: str = "null"
 
     class Config:
         populate_by_name = True
