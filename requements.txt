@@ -1,8 +1,7 @@
 aiogram
 pydantic_settings
 python-dotenv
-aiosqlite
-sqlalchemy
+motor
 ollama
 loguru
 requests[socks]
