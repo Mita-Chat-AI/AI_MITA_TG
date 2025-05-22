@@ -55,8 +55,8 @@
     },
     "TinyMita": {
         "params": {
-            "pith": -2,
-            "speed": "-20%"
+            "pith": 2,
+            "speed": "-10%"
         }
     },
     "GhostMita": {
