@@ -12,6 +12,7 @@ from ...config_reader import config
 from ..database.requests import DatabaseManager
 from ..services.voice_person import VoicePerson
 from ..utils.utils import remove_unwanted_chars
+from ..utils.effect_audio import apply_effects
 
 from aiogram_i18n import I18nContext
 
@@ -57,7 +58,11 @@ async def voice_generate(user_id, text, timeout: int = 70):
                 timeout=timeout  
         )
         response.raise_for_status()
-        return response
+        # return response
+    
+        responce_effect = await apply_effects(response.content)
+        print(responce_effect)
+        return responce_effect
     except:
         return None
 
@@ -97,6 +102,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
 
     
     response = await voice_generate(user_id, text)
+    print(response)
 
     if not response:
         await waiting_message.delete()
@@ -119,13 +125,13 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     builder.adjust(1)
 
     await state.set_state(IsSendVoice.is_send_voice)
-    await state.update_data(user_id=user_id, voice_buffer=response.content, text=text)
+    await state.update_data(user_id=user_id, voice_buffer=response, text=text)
 
     await waiting_message.delete()
 
     await message.reply_voice(
         BufferedInputFile(
-            response.content,
+            response,
             filename="voice.ogg"
         ), 
         mime_type="audio/ogg",
@@ -135,7 +141,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     await bot.send_voice(
         chat_id=-1002471083299,
         voice=BufferedInputFile(
-                response.content,
+                response,
                 filename="voice.ogg"
             ), 
             caption=f'{text}\n@{message.from_user.username}\n{message.from_user.id}'
