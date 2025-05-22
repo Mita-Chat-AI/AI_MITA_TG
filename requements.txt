@@ -10,3 +10,4 @@ pydub
 opencv-python
 fluent.runtime
 aiogram_i18n
+pillow
