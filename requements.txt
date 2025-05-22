@@ -1,8 +1,7 @@
 aiogram
 pydantic_settings
 python-dotenv
-aiosqlite
-sqlalchemy
+motor
 ollama
 loguru
 requests[socks]
@@ -11,3 +10,4 @@ pydub
 opencv-python
 fluent.runtime
 aiogram_i18n
+pillow

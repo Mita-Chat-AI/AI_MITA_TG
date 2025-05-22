@@ -1,47 +1,68 @@
 {
     "CrazyMita": {
         "params": {
-            "pith": 8
+            "pith": 8,
+            "speed": "+10%"
         }
     },
     "MitaMila": {
         "params": {
-            "pith": 8
+            "pith": 8,
+            "speed": "+10%"
         }
     },
     "CapMita": {
         "params": {
-            "pith": 10
+            "pith": 10,
+            "speed": "+10%"
         }
     },
     "KindMita": {
         "params": {
-            "pith": 8
+            "pith": 8,
+            "speed": "+10%"
         }
     },
     "SleepyMita": {
         "params": {
-            "pith": 5
+            "pith": 5,
+            "speed": "-20%"
         }
     },
     "MilaMita": {
         "params": {
-            "pith": 9
+            "pith": 9,
+            "speed": "+10%"
         }
     },
     "PhoneMita": {
         "params": {
-            "pith": 8
+            "pith": 8,
+            "speed": "+10%"
         }
     },
     "Player": {
         "params": {
-            "pith": -8
+            "pith": -8,
+            "speed": "-15%"
         }
     },
     "ShortHairMita": {
         "params": {
-            "pith": 10
+            "pith": 10,
+            "speed": "+10%"
+        }
+    },
+    "TinyMita": {
+        "params": {
+            "pith": 2,
+            "speed": "-10%"
+        }
+    },
+    "GhostMita": {
+        "params": {
+            "pith": -2,
+            "speed": "-10%"
         }
     }
 }

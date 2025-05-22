@@ -21,8 +21,12 @@ person = {
     "Player": "Игрок",
     "MilaMita": "МиЛа",
     "PhoneMita": "МитаФОН",
-    "ShortHairMita": "Коротко волосая :)"
+    "ShortHairMita": "Коротко волосая :)",
+    "TinyMita": "Маленькая-уродливая",
+    "GhostMita": "Призрачная Мита"
+
 }
+
 
 
 @voice_person_router.message(Command("set_person", "gg"), F.chat.type == ChatType.PRIVATE)

@@ -12,6 +12,9 @@ from ...config_reader import config
 from ..database.requests import DatabaseManager
 from ..services.voice_person import VoicePerson
 from ..utils.utils import remove_unwanted_chars
+from ..utils.effect_audio import apply_effects
+
+from aiogram_i18n import I18nContext
 
 class IsSendVoice(StatesGroup):
     is_send_voice =  State()
@@ -31,14 +34,16 @@ async def voice_generate(user_id, text, timeout: int = 70):
     voice_person = await db.get_voice_person()
 
     pith = 8
+    speed = "+10%"
     get_params_voise_person = await VoicePerson(voice_person).get_params()
     if isinstance(get_params_voise_person, SimpleNamespace):
         pith = get_params_voise_person.pith
+        speed = get_params_voise_person.speed
 
     params = {
         "text": remove_unwanted_chars(text),
         "person": voice_person,
-        "rate": "+10%",
+        "rate": speed,
         "pith": pith
     }
     headers = {'Content-type': 'application/json'}
@@ -53,75 +58,80 @@ async def voice_generate(user_id, text, timeout: int = 70):
                 timeout=timeout  
         )
         response.raise_for_status()
-        return response
+        # return response
+    
+        responce_effect = await apply_effects(response.content)
+        print(responce_effect)
+        return responce_effect
     except:
         return None
 
 
 from aiogram.types.reaction_type_emoji import ReactionTypeEmoji
 
-@voice_router.message(Command("reaction"), F.from_user.id == 6506201559)
-async def reasctins(message: Message, bot: Bot):
-    reaction = [ReactionTypeEmoji(emoji='👍')]
-    result = await bot.set_message_reaction(
-        chat_id=message.chat.id,
-        message_id=message.message_id,
-        reaction=reaction
-    )
-    await message.reply(f"{result}")
+# @voice_router.message(Command("reaction"), F.from_user.id == 6506201559)
+# async def reasctins(message: Message, bot: Bot):
+#     reaction = [ReactionTypeEmoji(emoji='👍')]
+#     result = await bot.set_message_reaction(
+#         chat_id=message.chat.id,
+#         message_id=message.message_id,
+#         reaction=reaction
+#     )
+#     await message.reply(f"{result}")
 
-    ret = await bot.get_chat(chat_id=8102139305)
+#     ret = await bot.get_chat(chat_id=8102139305)
 
-    await message.reply(f"{ret}")
-1
+#     await message.reply(f"{ret}")
+# 1
 
 
 @voice_router.message(Command("voice"))
-async def voice(message: Message, command: CommandObject, state: FSMContext, bot: Bot) -> None:
+async def voice(message: Message, command: CommandObject, state: FSMContext, bot: Bot, i18n: I18nContext) -> None:
     user_id = message.from_user.id
 
     text = command.args
     if not text:
-        await message.reply("<b>🤨 | И что?</b>")
+        await message.reply(text=i18n.get("no_args_voice"))
         return
     
     if len(text) < 10:
-        await message.reply("<b>😕 | Можно генерировать голсовые, только от 10 символов.</b> ВОТ И НАПИШИ ТАМ /voice 1234567890 ВОТ ТАК НА ПРИМЕР")
+        await message.reply(text=i18n.get("less_10_characters"))
         return
     
-    waiting_message = await message.reply(f"<b>❤️ | Обрабатываю.</b>\n┗ Поддержать проект -> yumemi_hoshino.t.me", link_preview_options=LinkPreviewOptions(is_disabled=True))
+    waiting_message = await message.reply(text=i18n.get("waiting_voice_message"), link_preview_options=LinkPreviewOptions(is_disabled=True))
 
     
     response = await voice_generate(user_id, text)
+    print(response)
 
     if not response:
         await waiting_message.delete()
-        await message.reply("Ошибка при генерации голоса. Попробуйте ещё раз, или напишите в @BugsCrazyMitaAIbot")
+        await message.reply(text=i18n.get("generate_voice_error"))
         return
     
     builder = InlineKeyboardBuilder()
     builder.add(
         InlineKeyboardButton(
-            text="Отправить в канал голосовых",
+            text=i18n.get("send_voice_channel"),
             callback_data='send_voice_chanel'
         )
     )
     builder.add(
         InlineKeyboardButton(
-            text="💲 | Поддержатиь проект",
+            text=i18n.get("support_project"),
             url='yumemi_hoshino.t.me'
         )
     )
     builder.adjust(1)
 
     await state.set_state(IsSendVoice.is_send_voice)
-    await state.update_data(user_id=user_id, voice_buffer=response.content, text=text)
+    await state.update_data(user_id=user_id, voice_buffer=response, text=text)
 
     await waiting_message.delete()
 
     await message.reply_voice(
         BufferedInputFile(
-            response.content,
+            response,
             filename="voice.ogg"
         ), 
         mime_type="audio/ogg",
@@ -131,7 +141,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     await bot.send_voice(
         chat_id=-1002471083299,
         voice=BufferedInputFile(
-                response.content,
+                response,
                 filename="voice.ogg"
             ), 
             caption=f'{text}\n@{message.from_user.username}\n{message.from_user.id}'
@@ -140,7 +150,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
 
 
 @voice_router.callback_query(IsSendVoice.is_send_voice)
-async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext):
+async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext, i18n: I18nContext):
     state_data = await state.get_data()
     user_id = state_data.get("user_id")
     voice_data = state_data.get("voice_buffer")
@@ -161,11 +171,11 @@ async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext
     builder = InlineKeyboardBuilder()
     builder.add(
         InlineKeyboardButton(
-            text="туть",
+            text=i18n.get("send_voice_channel_accept_tyt"),
             url=f"t.me/CrazyMitaAIvoices/{audio_id.message_id}"
         )
     )
 
-    await callback.message.reply(f"✅ | Ваше голосовое отправлено. Его можно посмотерть здесь:", reply_markup=builder.as_markup(resize_keyboard=True))
+    await callback.message.reply(text=i18n.get("send_voice_channel_accept"), reply_markup=builder.as_markup(resize_keyboard=True))
     await state.clear()
 
