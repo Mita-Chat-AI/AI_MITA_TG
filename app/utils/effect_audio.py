@@ -13,7 +13,7 @@ async def apply_effects(audio_bytes: bytes) -> bytes:
             Reverb(
                 room_size=0.001,
                 damping=0.8,
-                wet_level=0.17
+                wet_level=0.1
                 )
         ]
     )
