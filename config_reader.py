@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     max_ollama_chars: SecretStr
     memory_dir: SecretStr
     asr_api: SecretStr
+    channel_id: SecretStr
+    voice_channel: SecretStr
     
     model_config = SettingsConfigDict(
         env_file='AIO-MITA/.env', env_file_encoding='UTF-8'
