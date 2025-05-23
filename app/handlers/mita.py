@@ -22,7 +22,7 @@ from ..services.config_service import UserConfigService
 mita_router = Router()
 
 
-async def voice(message: Message, bot: Bot):
+async def voice(message: Message, bot: Bot) -> str:
     try:
         audio_bytes: BytesIO = await bot.download(file=message.voice)
         text = await ASR(audio_bytes).recognition()
@@ -32,13 +32,12 @@ async def voice(message: Message, bot: Bot):
         return
 
 
-async def images(message: Message, bot: Bot):
+async def images(message: Message, bot: Bot) -> str | None:
     try:
         if message.photo:
             file_id = message.photo[-1].file_id
             file_path = f"/tmp/{file_id}.jpg"
             await bot.download(file_id, destination=file_path)
-
 
             prompt = message.caption
             if not prompt:
@@ -47,7 +46,6 @@ async def images(message: Message, bot: Bot):
 
         elif message.sticker:
             file = message.sticker
-            file_info = await bot.get_file(file.file_id)
             file_ext = ".webp"
             if file.is_animated:
                 file_ext = ".tgs"
@@ -66,10 +64,10 @@ async def images(message: Message, bot: Bot):
                 if success:
                     image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
                     image.save(webp_path, format="WEBP")
-                    os.remove(file_path)  # Удаляем оригинальный .webm
-                    file_path = webp_path  # Используем путь к новому webp-файлу
+                    os.remove(file_path)
+                    file_path = webp_path
                 else:
-                    await message.reply("❌ Не удалось извлечь кадр из видео-стикера")
+                    await message.reply("❌ | <b>Не удалось извлечь кадр из видео-стикера</b>")
                     return None, None
         else:
             return None, None
@@ -82,10 +80,6 @@ async def images(message: Message, bot: Bot):
     except Exception as e:
         await message.reply(f"❌ Не удалось скачать или обработать стикер: {e}")
         return None, None
-
-
-
-
 
 
 @mita_router.message(F.chat.type == ChatType.PRIVATE,  F.content_type.in_([ContentType.TEXT, ContentType.PHOTO, ContentType.VOICE, ContentType.STICKER]))
@@ -117,13 +111,6 @@ async def mita(message: Message, bot: Bot) -> Message:
         if not file_path:
             return
         text = [{"role": "user", "content": prompt, 'images': [file_path]}]
-        # text = [{
-        #     "role": "user",
-        #     "content": [
-        #         {"type": "text", "text": prompt},
-        #         {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64_image}"}}
-        #     ]
-        # }]
 
     elif message.voice:
         prompt = await voice(message, bot)
@@ -188,24 +175,3 @@ async def mita(message: Message, bot: Bot) -> Message:
                 reaction=reaction
             )
             return response
-
-
-
-
-        
-
-
-
-# @voice_router.message(Command("reaction"), F.from_user.id == 6506201559)
-# async def reasctins(message: Message, bot: Bot):
-#     reaction = [ReactionTypeEmoji(emoji='👍')]
-#     result = await bot.set_message_reaction(
-#         chat_id=message.chat.id,
-#         message_id=message.message_id,
-#         reaction=reaction
-#     )
-#     await message.reply(f"{result}")
-
-#     ret = await bot.get_chat(chat_id=8102139305)
-
-#     await message.reply(f"{ret}")

@@ -9,7 +9,6 @@ from .mita import mita
 
 ask_router = Router()
 
-
 memory_time = {}
 last_bot_message = {}
 
@@ -30,6 +29,6 @@ async def handle_reply_to_bot(message: Message, bot: Bot) -> None:
 
     if user_id in last_bot_message and message.reply_to_message.message_id == last_bot_message[user_id]:
         bot_response = await mita(message, bot)
-        last_bot_message[user_id] = bot_response.message_id  # Store the new bot response id
+        last_bot_message[user_id] = bot_response.message_id
     else:
         print("Not last message")

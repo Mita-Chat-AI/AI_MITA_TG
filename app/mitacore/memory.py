@@ -1,11 +1,10 @@
 import os
 import json
-from loguru import logger
 from typing import List, Dict
 
+from loguru import logger
 
 from ...config_reader import config
-
 
 class Memory:
     def __init__(

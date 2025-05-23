@@ -1,8 +1,8 @@
-from loguru import logger
 from codetiming import Timer
 from typing import List, Dict
 from datetime import datetime
 
+from loguru import logger
 
 from .core import Core
 from .memory import Memory

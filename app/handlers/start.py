@@ -4,6 +4,8 @@ from aiogram_i18n import I18nContext
 
 from ..database.requests import DatabaseManager
 from ..services.conditions import conditions_accept
+
+
 start_router = Router()
 
 

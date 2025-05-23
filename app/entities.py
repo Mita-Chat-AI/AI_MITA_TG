@@ -15,3 +15,6 @@ class IsHistory(StatesGroup):
 
 class VoiceModState(StatesGroup):
     wait_voice_mod = State()
+
+class IsSendVoice(StatesGroup):
+    is_send_voice =  State()

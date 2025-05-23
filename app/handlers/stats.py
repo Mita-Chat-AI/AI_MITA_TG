@@ -4,7 +4,6 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters.command import Command
 
-
 from ..database.requests import DatabaseManager
 
 

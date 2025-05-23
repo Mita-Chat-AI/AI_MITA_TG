@@ -7,9 +7,7 @@ help_router = Router()
 
 
 @help_router.message(Command('help'))
-async def help(
-    message: Message
-) -> None:
+async def help(message: Message) -> None:
     await message.reply(
         text="""
 <b>❓ | Вот, что я умею:</b>

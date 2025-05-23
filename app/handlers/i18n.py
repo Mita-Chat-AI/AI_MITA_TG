@@ -9,7 +9,9 @@ from aiogram_i18n.utils.language_inline_keyboard import LanguageInlineMarkup
 from ..database.requests import DatabaseManager
 from .start import start
 
+
 i18n_router = Router()
+
 
 lang_kb = LanguageInlineMarkup(
     key="lang_button",
@@ -19,7 +21,7 @@ lang_kb = LanguageInlineMarkup(
 
 
 @i18n_router.callback_query(lang_kb.filter)
-async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext):
+async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext) -> None:
     db = DatabaseManager(call.from_user.id)
 
     await call.answer()
@@ -28,7 +30,7 @@ async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext):
 
 
 @i18n_router.message(Command("lang"))
-async def cmd_lang(message: Message, i18n: I18nContext):
+async def cmd_lang(message: Message, i18n: I18nContext) -> None:
         db = DatabaseManager(message.from_user.id)
         
         await message.reply(
@@ -37,15 +39,10 @@ async def cmd_lang(message: Message, i18n: I18nContext):
 
 
 @i18n_router.message(CommandStart())
-async def cmd_lang(message: Message, i18n: I18nContext):
+async def cmd_lang(message: Message, i18n: I18nContext) -> None:
     db = DatabaseManager(message.from_user.id)
     await db.set_user()
 
-    # print(await db.get_lang())
-    # print(message.from_user.language_code)
-
-    # if message.from_user.language_code == 'ru':
-    #     print(1)
     if await db.get_lang() == "null":
         print(2)
         await message.reply(

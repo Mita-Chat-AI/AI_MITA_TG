@@ -1,14 +1,12 @@
 import asyncio
-from loguru import logger
 from typing import List, Dict
-from ollama import AsyncClient
-#from openai import AsyncOpenAI
 
+from loguru import logger
+from ollama import AsyncClient
+from pydantic import BaseModel
 
 from ...config_reader import config
 
-
-from pydantic import BaseModel
 
 class FriendInfo(BaseModel):
     text: str
