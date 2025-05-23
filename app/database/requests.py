@@ -1,14 +1,11 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 from loguru import logger
-from typing import Optional
-import json
-from .db import UserModel, StatistikModel  # предполагаем, что модели уже описаны через Pydantic
+from .db import UserModel, StatistikModel
 
 client = AsyncIOMotorClient("mongodb://localhost:27017")
 db = client["mitaAI"]
 users_collection = db["users"]
 statistik_collection = db["statistiks"]
-
 
 class DatabaseManager:
     def __init__(self, tg_id: int):
