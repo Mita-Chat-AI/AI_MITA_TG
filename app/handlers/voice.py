@@ -1,35 +1,26 @@
 import asyncio
 import requests
+from types import SimpleNamespace
 
+from aiogram_i18n import I18nContext
 from aiogram import Router, Bot, F
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import StatesGroup, State
 from aiogram.filters.command import Command, CommandObject
 from aiogram.types import Message, BufferedInputFile, LinkPreviewOptions, InlineKeyboardButton, CallbackQuery
 
+from ..entities import IsSendVoice
 from ...config_reader import config
 from ..database.requests import DatabaseManager
 from ..services.voice_person import VoicePerson
 from ..utils.utils import remove_unwanted_chars
 from ..utils.effect_audio import apply_effects
 
-from aiogram_i18n import I18nContext
-
-class IsSendVoice(StatesGroup):
-    is_send_voice =  State()
-
-from types import SimpleNamespace
 
 voice_router = Router()
 
 
-proxy = {
-    'http': config.socks_proxy.get_secret_value()
-    }
-
-
-async def voice_generate(user_id, text, timeout: int = 70):
+async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
     db = DatabaseManager(user_id)
     voice_person = await db.get_voice_person()
 
@@ -54,35 +45,15 @@ async def voice_generate(user_id, text, timeout: int = 70):
                 url=config.voice_api.get_secret_value(),
                 json=params,
                 headers=headers,
-                proxies=proxy,
+                proxies={'http': config.socks_proxy.get_secret_value()},
                 timeout=timeout  
         )
         response.raise_for_status()
-        # return response
     
         responce_effect = await apply_effects(response.content)
-        print(responce_effect)
         return responce_effect
     except:
         return None
-
-
-from aiogram.types.reaction_type_emoji import ReactionTypeEmoji
-
-# @voice_router.message(Command("reaction"), F.from_user.id == 6506201559)
-# async def reasctins(message: Message, bot: Bot):
-#     reaction = [ReactionTypeEmoji(emoji='👍')]
-#     result = await bot.set_message_reaction(
-#         chat_id=message.chat.id,
-#         message_id=message.message_id,
-#         reaction=reaction
-#     )
-#     await message.reply(f"{result}")
-
-#     ret = await bot.get_chat(chat_id=8102139305)
-
-#     await message.reply(f"{ret}")
-# 1
 
 
 @voice_router.message(Command("voice"))
@@ -100,9 +71,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     
     waiting_message = await message.reply(text=i18n.get("waiting_voice_message"), link_preview_options=LinkPreviewOptions(is_disabled=True))
 
-    
     response = await voice_generate(user_id, text)
-    print(response)
 
     if not response:
         await waiting_message.delete()
@@ -139,7 +108,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     )
 
     await bot.send_voice(
-        chat_id=-1002471083299,
+        chat_id=config.voice_channel.get_secret_value(),
         voice=BufferedInputFile(
                 response,
                 filename="voice.ogg"
@@ -148,9 +117,8 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     )
 
 
-
 @voice_router.callback_query(IsSendVoice.is_send_voice)
-async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext, i18n: I18nContext):
+async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext, i18n: I18nContext) -> None:
     state_data = await state.get_data()
     user_id = state_data.get("user_id")
     voice_data = state_data.get("voice_buffer")

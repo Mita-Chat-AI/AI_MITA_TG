@@ -6,6 +6,7 @@ from aiogram.types.chat_member_owner import ChatMemberOwner
 from aiogram.types.chat_member_member import ChatMemberMember
 from aiogram.types.chat_member_administrator import ChatMemberAdministrator
 
+from ...config_reader import config
 from  ..database.requests import DatabaseManager
 from ..services.conditions import conditions_accept
 from aiogram_i18n import I18nContext
@@ -66,16 +67,8 @@ class MainMiddlware(BaseMiddleware):
             )
             return
 
-        # await bot.send_message(
-        #     chat_id=-1002471083299,
-        #     text=f"{event.from_user.id}, {event.text}"
-        # )
-
-
-        # Проверяем, является ли сообщение командой
         if event.text and event.text.startswith('/'): # Проверяем что сообщение не пустое и начинается с /
-            channel_id = -1002286457175
-
+            channel_id = config.channel_id.get_secret_value()
             get_member = await bot.get_chat_member(chat_id=channel_id, user_id=event.from_user.id)
             
             if isinstance(
@@ -85,7 +78,6 @@ class MainMiddlware(BaseMiddleware):
                     ChatMemberOwner
                 )
             ):
-                # Пользователь подписан, пропускаем дальше
                 pass
             else:
                 await bot.send_message(
