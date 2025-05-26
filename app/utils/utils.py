@@ -25,7 +25,14 @@ def remove_unwanted_chars(text) -> str:
         r'[\U0001F800-\U0001F8FF]|'
         r'[\U0001F900-\U0001F9FF]|'
         r'[~Σ]|'                       # символы ~ и Σ
-        r'\breactions\b|'             # слово reactions
-        r'\btext\b'                   # слово text
+        r'\breactions\b|'              # слово reactions
+        r'\btext\b|' 
+        r'\bhtml\b|'     
+        r'\bto player\b|'             
+        r'smilestrange>|'
+        r'smile>|'
+        r'discontent>',
+        flags=re.IGNORECASE
     )
     return pattern.sub('', text)
+
