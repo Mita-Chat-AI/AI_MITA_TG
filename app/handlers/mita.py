@@ -147,7 +147,7 @@ async def mita(message: Message, bot: Bot) -> Message:
         voice_buffer = await voice_generate(user_id, ai_response.get('response'))
         response = await message.reply_voice(
             BufferedInputFile(
-                voice_buffer.content,
+                voice_buffer,
                 filename="voice.ogg"
             ), 
             mime_type="audio/ogg"
