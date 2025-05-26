@@ -108,7 +108,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     )
 
     await bot.send_voice(
-        chat_id=config.voice_channel.get_secret_value(),
+        chat_id=config.log_channel_id.get_secret_value(),
         voice=BufferedInputFile(
                 response,
                 filename="voice.ogg"

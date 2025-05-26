@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     asr_api: SecretStr
     channel_id: SecretStr
     voice_channel: SecretStr
+    log_channel_id: SecretStr
     
     model_config = SettingsConfigDict(
         env_file='AIO-MITA/.env', env_file_encoding='UTF-8'
