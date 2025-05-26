@@ -25,8 +25,8 @@
     },
     "SleepyMita": {
         "params": {
-            "pith": 5,
-            "speed": "-20%"
+            "pith": 8,
+            "speed": "-10%"
         }
     },
     "MilaMita": {
