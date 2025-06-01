@@ -7,7 +7,6 @@ flag = EN
 lang_button = {flag}
 back = Back
 
-
 conditions = DON'T BE SCARED!! Terms of use have appeared. Read them and agree.
     🤓 | <u><b>Terms of use for Mita:</b></u>
     ┗ 18+ gs if you publish in a channel with voice messages - you will be banned in the bot.
@@ -35,3 +34,5 @@ send_voice_channel = Send to voice channel
 
 send_voice_channel_accept = ✅ | Your voice message has been sent. You can see it here:
 send_voice_channel_accept_tyt = here
+
+waiting_for_message_neural=<b>❤️ | Я тебе уже пишу!</b>
