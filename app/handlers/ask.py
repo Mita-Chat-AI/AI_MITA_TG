@@ -16,9 +16,9 @@ last_bot_message = {}
 
 @ask_router.message(Command("ask"), F.chat.type.in_([ChatType.GROUP, ChatType.SUPERGROUP]))
 async def ask(message: Message, i18n: I18nContext, bot: Bot) -> None:
-    await message.reply(text=i18n.get("waiting_voice_message"))
+    await message.reply(text=i18n.get("waiting_for_message_neural"))
     user_id = message.from_user.id
-    bot_response = await mita(message, bot)
+    bot_response = await mita(message, bot, i18n)
 
     last_bot_message[user_id] = bot_response.message_id
     memory_time[user_id] = time.time()
