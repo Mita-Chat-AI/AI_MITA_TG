@@ -1,6 +1,8 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 
+from pathlib import Path
+
 class Settings(BaseSettings):
     bot_token: SecretStr
     owner_id: SecretStr
@@ -15,9 +17,10 @@ class Settings(BaseSettings):
     voice_channel: SecretStr
     log_channel_id: SecretStr
     mongo_db: SecretStr
+    mongo_name: SecretStr
     
     model_config = SettingsConfigDict(
-        env_file='AIO-MITA/.env', env_file_encoding='UTF-8'
+        env_file=Path(__file__).resolve().parent / '.env', env_file_encoding='UTF-8'
     )
 
 config = Settings()

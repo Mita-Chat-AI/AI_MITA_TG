@@ -68,7 +68,7 @@ class StatistikModel(BaseModel):
 
 # Подключение к базе
 client = AsyncIOMotorClient(config.mongo_db.get_secret_value())
-db = client['mitaAI']
+db = client[config.mongo_name.get_secret_value()]
 
 # Коллекции
 users_collection = db['users']
