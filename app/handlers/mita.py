@@ -164,7 +164,6 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
             await message.reply(text=i18n.get("json_response_error"))
             return
 
-
         if raw_response.get("text") and raw_response["text"].strip():
             response = await message.reply(f"<b>{raw_response['text']}</b>")
             return response
