@@ -34,5 +34,3 @@ send_voice_channel = Send to voice channel
 
 send_voice_channel_accept = ✅ | Your voice message has been sent. You can see it here:
 send_voice_channel_accept_tyt = here
-
-waiting_for_message_neural=<b>❤️ | Я тебе уже пишу!</b>

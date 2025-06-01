@@ -34,5 +34,3 @@ send_voice_channel = Отправить в канал голосовых
 
 send_voice_channel_accept = ✅ | Ваше голосовое отправлено. Его можно посмотерть здесь:
 send_voice_channel_accept_tyt = тут
-
-waiting_for_message_neural=<b>❤️ | Я тебе уже пишу!</b>
