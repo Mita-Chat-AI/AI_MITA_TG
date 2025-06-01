@@ -5,6 +5,7 @@ from io import BytesIO
 import cv2
 from PIL import Image
 from aiogram import Router, Bot, F
+from aiogram_i18n import I18nContext
 from aiogram.enums.chat_type import ChatType
 from aiogram.enums import ChatAction, ContentType
 from aiogram.types import Message, BufferedInputFile
@@ -83,7 +84,7 @@ async def images(message: Message, bot: Bot) -> str | None:
 
 
 @mita_router.message(F.chat.type == ChatType.PRIVATE,  F.content_type.in_([ContentType.TEXT, ContentType.PHOTO, ContentType.VOICE, ContentType.STICKER]))
-async def mita(message: Message, bot: Bot) -> Message:
+async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
     user_id = message.from_user.id
     mita = Mita()
     configurator = UserConfigService(user_id)
@@ -157,7 +158,11 @@ async def mita(message: Message, bot: Bot) -> Message:
     else:
         import json
 
-        raw_response = json.loads(ai_response["response"])
+        try:
+            raw_response = json.loads(ai_response["response"])
+        except:
+            await message.reply(text=i18n.get("json_response_error"))
+            return
 
 
         if raw_response.get("text") and raw_response["text"].strip():
@@ -165,7 +170,6 @@ async def mita(message: Message, bot: Bot) -> Message:
             return response
 
         elif raw_response.get("reactions"):
-            print("REACTION SEND")
             from aiogram.types.reaction_type_emoji import ReactionTypeEmoji
 
             reaction = [ReactionTypeEmoji(emoji=raw_response["reactions"])]
