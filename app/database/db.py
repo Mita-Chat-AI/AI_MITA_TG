@@ -5,6 +5,8 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 from bson import ObjectId
 
+from ...config_reader import config
+
 # Класс для удобной работы с ObjectId в Pydanticfrom bson import ObjectId
 from pydantic import GetJsonSchemaHandler
 from pydantic.json_schema import JsonSchemaValue
@@ -65,7 +67,7 @@ class StatistikModel(BaseModel):
         allow_population_by_field_name = True
 
 # Подключение к базе
-client = AsyncIOMotorClient("mongodb://localhost:27017")
+client = AsyncIOMotorClient(config.mongo_db.get_secret_value())
 db = client['mitaAI']
 
 # Коллекции

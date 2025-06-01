@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     channel_id: SecretStr
     voice_channel: SecretStr
     log_channel_id: SecretStr
+    mongo_db: SecretStr
     
     model_config = SettingsConfigDict(
         env_file='AIO-MITA/.env', env_file_encoding='UTF-8'
