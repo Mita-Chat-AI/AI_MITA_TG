@@ -67,25 +67,25 @@ class MainMiddlware(BaseMiddleware):
             )
             return
 
-        if event.text and event.text.startswith('/'): # Проверяем что сообщение не пустое и начинается с /
-            channel_id = config.channel_id.get_secret_value()
-            get_member = await bot.get_chat_member(chat_id=channel_id, user_id=event.from_user.id)
+        # if event.text and event.text.startswith('/'): # Проверяем что сообщение не пустое и начинается с /
+        #     channel_id = config.channel_id.get_secret_value()
+        #     get_member = await bot.get_chat_member(chat_id=channel_id, user_id=event.from_user.id)
             
-            if isinstance(
-                get_member, (
-                    ChatMemberMember, 
-                    ChatMemberAdministrator, 
-                    ChatMemberOwner
-                )
-            ):
-                pass
-            else:
-                await bot.send_message(
-                    chat_id=event.chat.id,
-                    text=f"Вам нужно подписаться на @CrazyMitaAINews прежде чем взаимодействовать с Митой.",
-                    reply_to_message_id=event.message_id
-                )
-                return
+        #     if isinstance(
+        #         get_member, (
+        #             ChatMemberMember, 
+        #             ChatMemberAdministrator, 
+        #             ChatMemberOwner
+        #         )
+        #     ):
+        #         pass
+        #     else:
+        #         await bot.send_message(
+        #             chat_id=event.chat.id,
+        #             text=f"Вам нужно подписаться на @CrazyMitaAINews прежде чем взаимодействовать с Митой.",
+        #             reply_to_message_id=event.message_id
+        #         )
+        #         return
 
         result = await handler(event, data)
         return result
