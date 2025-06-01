@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from aiogram import Dispatcher, Bot
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.client.default import DefaultBotProperties
@@ -43,7 +45,7 @@ async def main() -> None:
     )
     i18n_middleware = I18nMiddleware(
         core=FluentRuntimeCore(
-            path="/home/miku/AIO-MITA/app/locales/{locale}/LC_MESSAGES",
+            path=Path(__file__).resolve().parent / "app/locales/{locale}/LC_MESSAGES",
             default_locale='ru'
         )
     )
