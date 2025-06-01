@@ -140,7 +140,7 @@ async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext
     builder.add(
         InlineKeyboardButton(
             text=i18n.get("send_voice_channel_accept_tyt"),
-            url=f"t.me/CrazyMitaAIvoices/{audio_id.message_id}"
+            url=f"t.me/{config.voice_channel_username.get_secret_value()}/{audio_id.message_id}"
         )
     )
 
