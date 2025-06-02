@@ -3,7 +3,7 @@ from loguru import logger
 from .db import UserModel, StatistikModel
 
 client = AsyncIOMotorClient("mongodb://localhost:27017")
-db = client["mitaAI_TEST"]
+db = client["TEST"]
 users_collection = db["users"]
 statistik_collection = db["statistiks"]
 
