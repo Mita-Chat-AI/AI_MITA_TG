@@ -1,8 +1,9 @@
 from aiogram import Router, F
+from aiogram_i18n import I18nContext
+from aiogram.filters.command import Command
 from aiogram.types import Message, InlineKeyboardButton, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.filters.command import Command
-from aiogram_i18n import I18nContext
+
 
 from ..database.requests import DatabaseManager
 
