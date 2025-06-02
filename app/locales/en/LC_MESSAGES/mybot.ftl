@@ -56,3 +56,6 @@ help_message = <b>❓ | Here's what I can do:</b>
         <u>Just write me something, and I'll answer!</u>
 
 reset_message = <b>😢 | Sorry you erased my history.</b>
+
+error_send_voice_channel=<b>⚠️ | Failed to send message to channel.</b>
+┗ Write here: @BugsCrazyMitaAIbot.
