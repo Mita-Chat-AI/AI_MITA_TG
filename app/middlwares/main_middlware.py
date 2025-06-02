@@ -1,15 +1,18 @@
 from typing import Callable, Dict, Any, Awaitable
 
+from aiogram_i18n import I18nContext
 from aiogram import BaseMiddleware, Bot
 from aiogram.types import TelegramObject, Message
 from aiogram.types.chat_member_owner import ChatMemberOwner
 from aiogram.types.chat_member_member import ChatMemberMember
 from aiogram.types.chat_member_administrator import ChatMemberAdministrator
 
+from aiogram.fsm.context import FSMContext
+
 from ...config_reader import config
 from  ..database.requests import DatabaseManager
 from ..services.conditions import conditions_accept
-from aiogram_i18n import I18nContext
+
 
 class MainMiddlware(BaseMiddleware):
     
@@ -17,9 +20,10 @@ class MainMiddlware(BaseMiddleware):
         self,
         handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
         event: Message,
-        data: Dict[str, Any]
+        data: Dict[str, Any],
     ) -> Any:
         
+        state: FSMContext = data['state']
         bot: Bot = data['bot']
         db = DatabaseManager(event.from_user.id)
         await db.set_user()
@@ -51,10 +55,10 @@ class MainMiddlware(BaseMiddleware):
                 await i18n.set_locale(lang)
             else:
                 from ..handlers.i18n import cmd_lang
-                await cmd_lang(event, i18n)
+                await cmd_lang(event, i18n, state)
                 return
 
-            await conditions_accept(event, i18n)
+            await conditions_accept(event, i18n, state)
             return
 
         is_blocked = await db.get_is_blocked_user()
