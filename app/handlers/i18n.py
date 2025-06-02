@@ -30,7 +30,7 @@ async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext) -> None:
 
 
 @i18n_router.message(Command("lang"))
-async def cmd_lang(message: Message, i18n: I18nContext) -> None:
+async def cmd_langg(message: Message, i18n: I18nContext) -> None:
         db = DatabaseManager(message.from_user.id)
         
         await message.reply(
