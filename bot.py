@@ -6,22 +6,23 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram_i18n import I18nMiddleware
 from aiogram_i18n.cores.fluent_runtime_core import FluentRuntimeCore
 
-from .app.handlers import (start_router,
-                           i18n_router,
-                           help_router,
-                           blocked_router,
-                           mita_router,
-                           prompt_router,
-                           stats_router,
-                           reset_router,
-                           ask_router,
-                           voice_person_router,
-                           voice_router,
-                           voice_lang,
-                           is_history,
-                           voicemod_router,
-                           conditions_accept_router
-                           )
+from .app.handlers import (
+    start_router,
+    i18n_router,
+    help_router,
+    blocked_router,
+    mita_router,
+    prompt_router,
+    stats_router,
+    reset_router,
+    ask_router,
+    voice_person_router,
+    voice_router,
+    voice_lang,
+    is_history,
+    voicemod_router,
+    conditions_accept_router
+)
 from .app.database.db import async_main
 from .config_reader import config
 from .app.middlwares.main_middlware import MainMiddlware
