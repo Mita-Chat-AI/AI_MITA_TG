@@ -16,10 +16,11 @@ class DatabaseManager:
             await users_collection.insert_one(UserModel(tg_id=self.tg_id).dict(by_alias=True))
             await statistik_collection.insert_one(StatistikModel(tg_id=self.tg_id).dict(by_alias=True))
             logger.info("User and Statistik created")
-
+    
     async def get_is_blocked_user(self) -> bool:
         user = await users_collection.find_one({"tg_id": self.tg_id})
         return user.get("is_blocked", False) if user else False
+
 
     async def set_blocked_user(self, blocked: bool) -> bool:
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"is_blocked": blocked}})
@@ -84,3 +85,6 @@ class DatabaseManager:
 
     async def set_lang(self, lang: str):
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"lang": lang}})
+
+    async def get_all_tgid(self):
+        return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]
