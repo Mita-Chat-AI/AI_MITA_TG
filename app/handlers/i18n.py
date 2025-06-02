@@ -1,7 +1,7 @@
 from aiogram import Router
-from aiogram.filters import Command, CommandStart
+from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
-
+from aiogram.filters import Command, CommandStart
 from aiogram_i18n import I18nContext, LazyProxy
 from aiogram_i18n.types import InlineKeyboardButton
 from aiogram_i18n.utils.language_inline_keyboard import LanguageInlineMarkup
@@ -39,7 +39,7 @@ async def cmd_lang(message: Message, i18n: I18nContext) -> None:
 
 
 @i18n_router.message(CommandStart())
-async def cmd_lang(message: Message, i18n: I18nContext) -> None:
+async def cmd_lang(message: Message, i18n: I18nContext, state: FSMContext) -> None:
     db = DatabaseManager(message.from_user.id)
     await db.set_user()
 
@@ -50,5 +50,5 @@ async def cmd_lang(message: Message, i18n: I18nContext) -> None:
         )
         return
     else:
-        await start(message, i18n)
+        await start(message, i18n, state)
 
