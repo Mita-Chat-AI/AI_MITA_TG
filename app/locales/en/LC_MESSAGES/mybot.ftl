@@ -40,20 +40,22 @@ waiting_for_message_neural=<b>❤️ | I'm already writing to you!</b>
 
 help_message = <b>❓ | Here's what I can do:</b>
         —————
-        ┗ /ask - Ask Mitya a question [GROUP]
-        ┗ /voice - Generate GS with Mitya's voice
-        ┗ /set_person - Choose a character to generate GS
-        ┗ /set_voicemod - Voicemod mode
-        ┗ /setbio - Describe yourself to Mitya
-        ┗ /voice_lang - Change Mitya's language in /voice
-        ┗ /history - Memory saving settings
-        ┗ /stats - Chat statistics with Mitya
-        ┗ /start - Welcome message
-        ┗ /about - Other
-        ┗ /reset - Erase all memory
-        ┗ /set_tokens - Set a word limit for a response
+        ┗ /ask — Ask Mita a question [GROUP]  
+        ┗ /voice — Generate a voice message with Mita's voice  
+        ┗ /set_person — Choose a character for voice generation  
+        ┗ /set_voicemod — Voice mod mode  
+        ┗ /setbio — Tell Mita about yourself  
+        ┗ /voice_lang — Change Mita's voice language  
+        ┗ /lang — Change Mita's language  
+        ┗ /history — Memory saving settings  
+        ┗ /reset — Clear all memory  
+        ┗ /set_tokens — Set word limit for responses  
+        ┗ /stats — Chat stats with Mita  
+        ┗ /about — Other info  
+        ┗ /start — Welcome message  
         —————
-        <u>Just write me something, and I'll answer!</u>
+        <u>Just send me a message and I’ll reply!</u>
+
 
 reset_message = <b>😢 | Sorry you erased my history.</b>
 
