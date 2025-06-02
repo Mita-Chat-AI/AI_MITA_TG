@@ -13,3 +13,4 @@ from .configs.voice_lang import voice_lang
 from .configs.is_history import is_history
 from .configs.voice_mode import voicemod_router
 from ..services.conditions import conditions_accept_router
+from .mailing import mailing_router
