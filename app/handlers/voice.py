@@ -127,23 +127,26 @@ async def send_voice_chanel(callback: CallbackQuery, bot: Bot, state: FSMContext
     if user_id != callback.from_user.id:
         return
 
-    audio_id = await bot.send_voice(
-        chat_id=-1002326238712,
-        voice=BufferedInputFile(
-                voice_data,
-                filename="voice.ogg"
-            ), 
+    try:
+        msg = await bot.send_voice(
+            chat_id=-1002326238712,
+            voice=BufferedInputFile(voice_data, filename="voice.ogg"),
             caption=text
-    )
-
-    builder = InlineKeyboardBuilder()
-    builder.add(
-        InlineKeyboardButton(
-            text=i18n.get("send_voice_channel_accept_tyt"),
-            url=f"t.me/{config.voice_channel_username.get_secret_value()}/{audio_id.message_id}"
         )
-    )
 
-    await callback.message.reply(text=i18n.get("send_voice_channel_accept"), reply_markup=builder.as_markup(resize_keyboard=True))
+        builder = InlineKeyboardBuilder()
+        builder.add(
+            InlineKeyboardButton(
+                text=i18n.get("send_voice_channel_accept_tyt"),
+                url=f"https://t.me/{config.voice_channel_username.get_secret_value()}/{msg.message_id}"
+            )
+        )
+
+        await callback.message.reply(
+            text=i18n.get("send_voice_channel_accept"),
+            reply_markup=builder.as_markup(resize_keyboard=True)
+        )
+    except Exception as e:
+        await callback.message.reply(text=i18n.get("error_send_voice_channel"))
+
     await state.clear()
-
