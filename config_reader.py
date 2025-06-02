@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     mongo_name: SecretStr
     start_video_url: SecretStr
     voice_channel_username: SecretStr
+    help_pic_url: SecretStr
     
     model_config = SettingsConfigDict(
         env_file=Path(__file__).resolve().parent / '.env', env_file_encoding='UTF-8'
