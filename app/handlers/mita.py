@@ -10,6 +10,7 @@ from aiogram.enums.chat_type import ChatType
 from aiogram.enums import ChatAction, ContentType
 from aiogram.types import Message, BufferedInputFile
 
+from .reset import reset
 from ..services.asr import ASR
 from .voice import voice_generate
 from ...config_reader import config
@@ -122,8 +123,7 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
     user_chars, mita_chars = await memory_chars(memory)
 
     if user_chars + mita_chars > int(config.max_ollama_chars.get_secret_value()):
-        await message.reply("<b>💔 | К сожалению, моя память стёрлась из-за лимитов.</b>")
-        Memory(user_id).reset_memory()
+        await reset(message, i18n)
         return
 
     await bot.send_chat_action(chat_id=message.chat.id, action=ChatAction.TYPING)
