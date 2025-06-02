@@ -21,7 +21,8 @@ from .app.handlers import (
     voice_lang,
     is_history,
     voicemod_router,
-    conditions_accept_router
+    conditions_accept_router,
+    mailing_router
 )
 from .app.database.db import async_main
 from .config_reader import config
@@ -65,6 +66,7 @@ async def main() -> None:
         is_history,
         voicemod_router,
         conditions_accept_router,
+        mailing_router,
 
         ask_router,
         mita_router
