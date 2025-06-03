@@ -58,6 +58,8 @@ class StatistikModel(BaseModel):
     mita_chars: int = 0
     user_time: List[str] = []
     time_response: List[str] = []
+    voice_use: List[str] = []
+    voice_recoregtion: List[str] = []
 
     class Config:
         populate_by_name = True

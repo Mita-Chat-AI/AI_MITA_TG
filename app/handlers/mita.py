@@ -1,6 +1,7 @@
 import os
 import base64
 from io import BytesIO
+from datetime import datetime
 
 import cv2
 from PIL import Image
@@ -24,10 +25,11 @@ from ..services.config_service import UserConfigService
 mita_router = Router()
 
 
-async def voice(message: Message, bot: Bot) -> str:
+async def voice(message: Message, bot: Bot, db: DatabaseManager) -> str:
     try:
         audio_bytes: BytesIO = await bot.download(file=message.voice)
         text = await ASR(audio_bytes).recognition()
+        await db.set_voice_recoregtion([datetime.now().strftime("%Y-%m-%d %H:%M:%S"), text.get('text')])
         return text.get('text')
     except Exception as e:
         await message.reply(f"Кажется, я не смогла распознать твой голос  {e}")
@@ -115,7 +117,7 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         text = [{"role": "user", "content": prompt, 'images': [file_path]}]
 
     elif message.voice:
-        prompt = await voice(message, bot)
+        prompt = await voice(message, bot, db)
         if not prompt:
             return
         text = [{"role": "user", "content": prompt}]

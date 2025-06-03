@@ -44,6 +44,13 @@ class DatabaseManager:
     async def set_user_time(self, new_time: str) -> None:
         await statistik_collection.update_one({"tg_id": self.tg_id}, {"$push": {"user_time": new_time}})
 
+    async def set_voice_use(self, new_voice_use: str) -> None:
+        await statistik_collection.update_one({"tg_id": self.tg_id}, {"$push": {"voice_use": new_voice_use}})
+
+    async def set_voice_recoregtion(self, new_voice_recoregtion: str) -> None:
+        await statistik_collection.update_one({"tg_id": self.tg_id}, {"$push": {"voice_recoregtion": new_voice_recoregtion}})
+
+
     async def set_system_prompt(self, system_prompt: str) -> None:
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"system_prompt": system_prompt}})
 

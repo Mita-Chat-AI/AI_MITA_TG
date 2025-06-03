@@ -1,6 +1,8 @@
 import asyncio
 import requests
 from types import SimpleNamespace
+from datetime import datetime
+
 
 from aiogram_i18n import I18nContext
 from aiogram import Router, Bot, F
@@ -60,6 +62,8 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
 async def voice(message: Message, command: CommandObject, state: FSMContext, bot: Bot, i18n: I18nContext) -> None:
     user_id = message.from_user.id
 
+    db = DatabaseManager(user_id)
+
     text = command.args
     if not text:
         await message.reply(text=i18n.get("no_args_voice"))
@@ -115,6 +119,8 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
             ), 
             caption=f'{text}\n@{message.from_user.username}\n{message.from_user.id}'
     )
+
+    await db.set_voice_use(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 
 @voice_router.callback_query(IsSendVoice.is_send_voice)
