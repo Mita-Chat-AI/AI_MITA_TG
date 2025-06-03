@@ -3,13 +3,14 @@ import asyncio
 from aiogram import Router, Bot, F
 from aiogram.types import Message
 
+from ...config_reader import config
 from ..database.requests import DatabaseManager
 
 
 mailing_router = Router()
 
 
-@mailing_router.message(F.chat.id == -1002427185323)  # без кавычек, это int
+@mailing_router.message(F.chat.id == -1002614374485)
 async def mailing(message: Message, bot: Bot):
     db = DatabaseManager(message.from_user.id)
     tg_ids = await db.get_all_tgid()
@@ -22,5 +23,13 @@ async def mailing(message: Message, bot: Bot):
                 from_chat_id=message.chat.id,
                 message_id=message.message_id
             )
+
+            await bot.send_message(
+                chat_id=config.owner_id.get_secret_value(),
+                text=f"{user_id} отправлено ваше сообщение"
+            )
         except Exception as e:
-            print(f"Не удалось отправить пользователю {user_id}: {e}")
+            await bot.send_message(
+                chat_id=config.owner_id.get_secret_value(),
+                text=f"НЕ УДАЛОСЬ ОТПРАВИТЬ {user_id} ваше сообщение\n\n{e}"
+            )
