@@ -56,8 +56,10 @@ help_message = <b>❓ | Here's what I can do:</b>
         —————
         <u>Just send me a message and I’ll reply!</u>
 
+json_response_error=😢 | <b>Mita did not return anything in response</b>
+            ┗ Write here: @BugsCrazyMitaAIbot.
 
 reset_message = <b>😢 | Sorry you erased my history.</b>
 
 error_send_voice_channel=<b>⚠️ | Failed to send message to channel.</b>
-┗ Write here: @BugsCrazyMitaAIbot.
+            ┗ Write here: @BugsCrazyMitaAIbot.
