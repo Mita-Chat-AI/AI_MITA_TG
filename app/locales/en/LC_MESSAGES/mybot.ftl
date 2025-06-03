@@ -8,17 +8,18 @@ lang_button = {flag}
 back = Back
 
 conditions = DON'T BE SCARED!! Terms of use have appeared. Read them and agree.
-    🤓 | <u><b>Terms of use for Mita:</b></u>
-    ┗ 18+ gs if you publish in a channel with voice messages - you will be banned in the bot.
-    ┗ Problems with Mita? @BugsCrazyMitaAIbot.
-    ┗ The project is free, so don't ask for miracles from it.
-    ┗ Yes, we have access to your correspondence, but we are not interested in them.
-    ┗ Communicate with Mita as you want, but don't show the 18+ topics that you discuss with her for general viewing.
+        🤓 | <u><b>Terms of use for Mita:</b></u>
+        ┗ 18+ gs published in a channel with voice - banned in the bot.
+        ┗ Problems with Mita? @BugsCrazyMitaAIbot.
+        ┗ The project is free, so don't ask for miracles from it.
+        ┗ Yes, we have access to your correspondence, but we are not interested in them.
+        ┗ Communicate with Mita as you want, but do not show 18+ topics that you discuss with her for general viewing.
+        ┗ We collect statistics about you: how many times you used the voice command, when you interacted with Mita, recognized voices. This data is needed strictly for general statistics and analytics
 
-    ❗️ | We WILL NOTIFY you if the conditions are changed
-    ┗ Agreements here: /conditions
-    —————
-    <b>We will be very glad to <u>financial support</u>, we lack it:</b> yumemi_hoshino.t.me
+        ❗️ | We WILL NOTIFY you if the conditions are changed
+        ┗ Agreements here: /conditions
+        —————
+        <b>We will be very glad to <u>financial support</u>, we lack it:</b> yumemi_hoshino.t.me
 
 conditions_accept = ✅ | I accept the terms
 conditions_acception = <b>🤓 | Well done, <u>baby.</u> You can continue using Mita.</b>
