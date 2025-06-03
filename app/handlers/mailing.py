@@ -9,8 +9,10 @@ from ..database.requests import DatabaseManager
 
 mailing_router = Router()
 
+chat_id_mailing = config.mailing_chat_id.get_secret_value()
 
-@mailing_router.message(F.chat.id == -1002614374485)
+
+@mailing_router.message(F.chat.id == chat_id_mailing)
 async def mailing(message: Message, bot: Bot):
     db = DatabaseManager(message.from_user.id)
     tg_ids = await db.get_all_tgid()

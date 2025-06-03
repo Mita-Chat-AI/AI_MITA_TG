@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     start_video_url: SecretStr
     voice_channel_username: SecretStr
     help_pic_url: SecretStr
+    mailing_chat_id: SecretStr
     
     model_config = SettingsConfigDict(
         env_file=Path(__file__).resolve().parent / '.env', env_file_encoding='UTF-8'
