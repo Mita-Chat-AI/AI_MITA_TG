@@ -35,3 +35,9 @@ async def mailing(message: Message, bot: Bot):
                 chat_id=config.owner_id.get_secret_value(),
                 text=f"НЕ УДАЛОСЬ ОТПРАВИТЬ {user_id} ваше сообщение\n\n{e}"
             )
+
+    await bot.send_message(
+        chat_id=config.owner_id.get_secret_value(),
+        text=f"Всё сообщения были отправлены"
+    )
+
