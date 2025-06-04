@@ -93,5 +93,12 @@ class DatabaseManager:
     async def set_lang(self, lang: str):
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"lang": lang}})
 
+    async def set_conv(self, conv: int) -> None:
+        await statistik_collection.update_one({"tg_id": self.tg_id}, {"$set": {"conv": conv}})
+
+    async def get_conv(self):
+        user = await users_collection.find_one({"tg_id": self.tg_id})
+        return user.get("conv") if user else None
+
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]

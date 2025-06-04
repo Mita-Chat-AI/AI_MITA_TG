@@ -60,6 +60,7 @@ class StatistikModel(BaseModel):
     time_response: List[str] = []
     voice_use: List[str] = []
     voice_recoregtion: List[str] = []
+    conv: int = 0
 
     class Config:
         populate_by_name = True
