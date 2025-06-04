@@ -128,6 +128,7 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         return
 
     await bot.send_chat_action(chat_id=message.chat.id, action=ChatAction.TYPING)
+    await db.set_conv(1)
 
     ai_response = await mita.call_llm(
         user_id,
@@ -162,8 +163,8 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         try:
             raw_response = json.loads(ai_response["response"])
         except:
-            await message.reply(text=i18n.get("json_response_error"))
-            return
+            response = await message.reply(text=i18n.get("json_response_error"))
+            return response
 
         if raw_response.get("text") and raw_response["text"].strip():
             response = await message.reply(f"<b>{raw_response['text']}</b>")
