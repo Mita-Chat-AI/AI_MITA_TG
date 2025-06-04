@@ -102,3 +102,6 @@ class DatabaseManager:
 
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]
+    
+    async def get_all_conv(swlf):
+        return statistik_collection.find({"conv": 1})
