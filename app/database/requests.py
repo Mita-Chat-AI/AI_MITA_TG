@@ -99,6 +99,14 @@ class DatabaseManager:
     async def get_conv(self):
         user = await users_collection.find_one({"tg_id": self.tg_id})
         return user.get("conv") if user else None
+    
+    async def set_voice_engine(self, voice_engine: int) -> None:
+        await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"voice_engine": voice_engine}})
+
+    async def get_voice_engine(self):
+        user = await users_collection.find_one({"tg_id": self.tg_id})
+        print(user.get("get_voice_engine"))
+        return user.get("voice_engine") if user else "edge"
 
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]
