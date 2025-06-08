@@ -23,3 +23,7 @@ class IsSendVoice(StatesGroup):
 
 class IsConditions(StatesGroup):
     is_conditions = State()
+
+
+class Isvoice_engine(StatesGroup):
+    is_voice_engine = State()
