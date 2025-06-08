@@ -12,6 +12,7 @@ from .start import start
 
 i18n_router = Router()
 
+#async def start(message: Message, i18n: I18nContext, state: FSMContext) -> None:
 
 lang_kb = LanguageInlineMarkup(
     key="lang_button",
@@ -20,13 +21,18 @@ lang_kb = LanguageInlineMarkup(
 )
 
 
+
 @i18n_router.callback_query(lang_kb.filter)
-async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext) -> None:
+async def btn_help(call: CallbackQuery, lang: str, i18n: I18nContext, state: FSMContext) -> None:
     db = DatabaseManager(call.from_user.id)
 
     await call.answer()
     await db.set_lang(lang=lang)
-    await call.message.edit_text(text=i18n.cur.lang(language=i18n.locale))
+
+    await i18n.set_locale(lang)
+
+    await call.message.edit_text(text=i18n.get("cur-lang", language=await db.get_lang()))
+    await start(call.message, i18n, state)
 
 
 @i18n_router.message(Command("lang"))
