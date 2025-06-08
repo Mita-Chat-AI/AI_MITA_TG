@@ -1,0 +1,80 @@
+{
+    "CrazyMita": {
+        "params": {
+            "rate": "0.4",               
+            "pith": 5,                   
+            "speaker_id": 1,             
+            "speech_rate": 0.8,             
+            "duration_noise_level": 0.7,
+            "scale": 1.0
+        }
+    },
+    "MitaMila": {
+        "params": {
+            "pith": 8,
+            "speed": "+10%"
+        }
+    },
+    "CapMita": {
+        "params": {
+            "rate": "0.4",               
+            "pith": 6,                   
+            "speaker_id": 1,             
+            "speech_rate": 0.85,             
+            "duration_noise_level": 1,
+            "scale": 1.0
+        }
+    },
+    "KindMita": {
+        "params": {
+            "pith": 8,
+            "speed": "+10%"
+        }
+    },
+    "SleepyMita": {
+        "params": {
+            "rate": "0.4",               
+            "pith": 6,                   
+            "speaker_id": 0,             
+            "speech_rate": 0.5,             
+            "duration_noise_level": 0.7,
+            "scale": 1.0
+        }
+    },
+    "MilaMita": {
+        "params": {
+            "pith": 9,
+            "speed": "+10%"
+        }
+    },
+    "PhoneMita": {
+        "params": {
+            "pith": 8,
+            "speed": "+10%"
+        }
+    },
+    "Player": {
+        "params": {
+            "pith": -8,
+            "speed": "-15%"
+        }
+    },
+    "ShortHairMita": {
+        "params": {
+            "pith": 10,
+            "speed": "+10%"
+        }
+    },
+    "TinyMita": {
+        "params": {
+            "pith": 2,
+            "speed": "-10%"
+        }
+    },
+    "GhostMita": {
+        "params": {
+            "pith": -2,
+            "speed": "-10%"
+        }
+    }
+}
