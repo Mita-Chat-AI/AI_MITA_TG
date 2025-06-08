@@ -22,13 +22,13 @@ from ..utils.effect_audio import apply_effects
 voice_router = Router()
 
 
-async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
+async def voice_generate(user_id, text, timeout: int = 70) -> bytes | None:
     db = DatabaseManager(user_id)
     voice_person = await db.get_voice_person()
 
     pith = 8
     speed = "+10%"
-    get_params_voise_person = await VoicePerson(voice_person).get_params()
+    get_params_voise_person = await VoicePerson(voice_person, "persons.json").get_params()
     if isinstance(get_params_voise_person, SimpleNamespace):
         pith = get_params_voise_person.pith
         speed = get_params_voise_person.speed
@@ -39,6 +39,8 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
         "rate": speed,
         "pith": pith
     }
+
+    
     headers = {'Content-type': 'application/json'}
 
     try:
@@ -53,7 +55,9 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
         response.raise_for_status()
     
         responce_effect = await apply_effects(response.content)
+
         return responce_effect
+
     except:
         return None
 
