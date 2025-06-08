@@ -1,15 +1,16 @@
 # NOTE: Код ChatGPT, который нужно переписать
-
-from motor.motor_asyncio import AsyncIOMotorClient
-from pydantic import BaseModel, Field
 from typing import Optional, List
+
+
 from bson import ObjectId
+from pydantic import BaseModel, Field
+from pydantic import GetJsonSchemaHandler
+from pydantic.json_schema import JsonSchemaValue
+from motor.motor_asyncio import AsyncIOMotorClient
+
 
 from ...config_reader import config
 
-# Класс для удобной работы с ObjectId в Pydanticfrom bson import ObjectId
-from pydantic import GetJsonSchemaHandler
-from pydantic.json_schema import JsonSchemaValue
 
 class PyObjectId(ObjectId):
     @classmethod
