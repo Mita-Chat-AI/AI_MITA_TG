@@ -62,6 +62,55 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
         return None
 
 
+
+async def voice_generate_тnew(user_id, text, timeout: int = 70) -> bytes | None:
+    db = DatabaseManager(user_id)
+    voice_person = await db.get_voice_person()
+
+    get_params_voise_person = await VoicePerson(voice_person, "new_persons.json").get_params()
+    if isinstance(get_params_voise_person, SimpleNamespace):
+        pith = get_params_voise_person.pith
+
+        rate = get_params_voise_person.rate
+        pith = get_params_voise_person.pith
+        speaker_id = get_params_voise_person.speaker_id
+        speech_rate = get_params_voise_person.speech_rate
+        duration_noise_level = get_params_voise_person.duration_noise_level
+        scale = get_params_voise_person.scale
+
+
+    params = {
+        "text": remove_unwanted_chars(text),
+        "person": voice_person,
+        "rate": rate,
+        "pith": pith,
+        "speaker_id": speaker_id,
+        "speech_rate": speech_rate,
+        "duration_noise_level": duration_noise_level,
+        "scale": scale
+
+    }
+    headers = {'Content-type': 'application/json'}
+
+    try:
+        response = await asyncio.to_thread(
+            requests.post,
+                url="http://localhost:4000/api/v1/vosk/get_vosk",#config.voice_api.get_secret_value(),
+                json=params,
+                headers=headers,
+                #proxies={'http': config.socks_proxy.get_secret_value()},
+                timeout=timeout  
+        )
+        response.raise_for_status()
+    
+        responce_effect = await apply_effects(response.content)
+        print(responce_effect)
+
+        return responce_effect
+    except:
+        return None
+
+
 @voice_router.message(Command("voice"))
 async def voice(message: Message, command: CommandObject, state: FSMContext, bot: Bot, i18n: I18nContext) -> None:
     user_id = message.from_user.id
@@ -79,7 +128,12 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     
     waiting_message = await message.reply(text=i18n.get("waiting_voice_message"), link_preview_options=LinkPreviewOptions(is_disabled=True))
 
-    response = await voice_generate(user_id, text)
+    if await db.get_voice_engine() == 'vosk':
+        response = await voice_generate_тnew(user_id, text)
+    else:
+        response = await voice_generate(user_id, text)
+
+
 
     if not response:
         await waiting_message.delete()
@@ -114,6 +168,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
         mime_type="audio/ogg",
         reply_markup=builder.as_markup(resize_keyboard=True)
     )
+    await message.reply(f"{await db.get_voice_engine()}")
 
     await bot.send_voice(
         chat_id=config.log_channel_id.get_secret_value(),
