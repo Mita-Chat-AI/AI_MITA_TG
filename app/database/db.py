@@ -42,6 +42,7 @@ class UserModel(BaseModel):
     is_history: bool = True
     voice_mode: bool = False
     lang: str = "null"
+    voice_engine: int = 1
 
     class Config:
         populate_by_name = True
