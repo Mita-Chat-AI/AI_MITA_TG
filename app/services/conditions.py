@@ -5,6 +5,7 @@ from aiogram.filters.command import Command
 from aiogram.types import Message, InlineKeyboardButton, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
+from ..handlers.start import start
 from ..entities import IsConditions
 from ..database.requests import DatabaseManager
 
@@ -30,11 +31,12 @@ async def conditions_accept(message: Message, i18n: I18nContext, state: FSMConte
 
 
 @conditions_accept_router.callback_query(IsConditions.is_conditions)
-async def handle_accept_conditions(callback: CallbackQuery, i18n: I18nContext) -> None:
+async def handle_accept_conditions(callback: CallbackQuery, i18n: I18nContext, state: FSMContext) -> None:
     db = DatabaseManager(callback.from_user.id)
 
     await db.set_conditions(True)
     await callback.message.reply(text=i18n.get("conditions_acception"))
+    await start(callback.message, i18n, state)
 
 
 @conditions_accept_router.message(Command('conditions'))
