@@ -22,7 +22,7 @@ from ..utils.effect_audio import apply_effects
 voice_router = Router()
 
 
-async def voice_generate(user_id, text, timeout: int = 70) -> bytes | None:
+async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
     db = DatabaseManager(user_id)
     voice_person = await db.get_voice_person()
 
