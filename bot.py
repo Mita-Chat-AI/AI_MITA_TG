@@ -23,7 +23,8 @@ from .app.handlers import (
     voicemod_router,
     conditions_accept_router,
     mailing_router,
-    conv_timer_router
+    conv_timer_router,
+    set_voice_engine_router
 )
 from .app.database.db import async_main
 from .config_reader import config
@@ -69,6 +70,7 @@ async def main() -> None:
         conditions_accept_router,
         mailing_router,
         conv_timer_router,
+        set_voice_engine_router,
 
         ask_router,
         mita_router
