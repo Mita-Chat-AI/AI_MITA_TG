@@ -36,7 +36,7 @@ class MainMiddlware(BaseMiddleware):
                 await i18n.set_locale(lang)
             else:
                 from ..handlers.i18n import cmd_lang
-                await cmd_lang(event, i18n)
+                await cmd_lang(event, i18n, state)
                 return
 
 
