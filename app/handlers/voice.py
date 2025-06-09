@@ -129,7 +129,19 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     waiting_message = await message.reply(text=i18n.get("waiting_voice_message"), link_preview_options=LinkPreviewOptions(is_disabled=True))
 
     if await db.get_voice_engine() == 'vosk':
-        response = await voice_generate_тnew(user_id, text)
+        if await db.get_subscribe() == 1:
+            response = await voice_generate_тnew(user_id, text)
+        else:
+            await message.reply("""
+😔 Эх...
+У тебя пока нет подписки на новый голосовой движок. Стоит всего 170₽ в месяц (можно в другой валюте, если ты из параллельной вселенной).
+
+Хочешь активировать буст? Пиши сюда — astolfo_potyjniy.t.me [или @BugsCrazyMitaAIbot] Он всё оформит, без квестов и танцев с бубном.
+
+Нет денег? Не переживай, придумаем что-то :)
+""")
+            await waiting_message.delete()
+            return
     else:
         response = await voice_generate(user_id, text)
 
