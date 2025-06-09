@@ -1,4 +1,5 @@
 venv/
+.venv/
 __pycache__
 .env
 alembic
@@ -7,3 +8,5 @@ train.parquet
 11.parquet
 output.json
 users_history/*
+users_history/*
+
