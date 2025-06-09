@@ -107,6 +107,15 @@ class DatabaseManager:
         user = await users_collection.find_one({"tg_id": self.tg_id})
         print(user.get("get_voice_engine"))
         return user.get("voice_engine") if user else "edge"
+    
+
+    async def set_subscribe(self, subscribe: int) -> None:
+        await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"subscribe": subscribe}})
+
+    async def get_subscribe(self):
+        user = await users_collection.find_one({"tg_id": self.tg_id})
+        print(user.get("subscribe"))
+        return user.get("subscribe") if user else 0
 
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]

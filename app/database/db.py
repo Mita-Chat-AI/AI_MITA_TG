@@ -43,6 +43,7 @@ class UserModel(BaseModel):
     voice_mode: bool = False
     lang: str = "null"
     voice_engine: int = 1
+    subscribe: int = 0
 
     class Config:
         populate_by_name = True
