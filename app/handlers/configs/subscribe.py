@@ -11,7 +11,7 @@ subscribe_router = Router()
 async def subscribe(message: Message) -> None:
     text = message.text.split(maxsplit=2)
 
-    db = DatabaseManager(message.from_user.id)
+    
 
     if len(text) != 3:
         await message.reply("не правильно используешь команду")
@@ -21,6 +21,8 @@ async def subscribe(message: Message) -> None:
         await message.reply('Не правильн! + или - !')
         return
 
+
+    db = DatabaseManager(int(text[1]))
 
     try:
         await db.set_subscribe(1 if text[2] == '+' else 0) # Вызываем blocker, но не используем его возвращаемое значение.

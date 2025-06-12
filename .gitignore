@@ -9,4 +9,5 @@ train.parquet
 output.json
 users_history/*
 users_history/*
+.pkl
 

@@ -27,8 +27,12 @@
     },
     "KindMita": {
         "params": {
-            "pith": 8,
-            "speed": "+10%"
+            "rate": "0.4",               
+            "pith": 9,                   
+            "speaker_id": 2,             
+            "speech_rate": 0.8,             
+            "duration_noise_level": 0.7,
+            "scale": 1.0
         }
     },
     "SleepyMita": {
@@ -43,8 +47,12 @@
     },
     "MilaMita": {
         "params": {
-            "pith": 9,
-            "speed": "+10%"
+            "rate": "0.4",               
+            "pith": 5,                   
+            "speaker_id": 1,             
+            "speech_rate": 0.7,             
+            "duration_noise_level": 1.0,
+            "scale": 1.0
         }
     },
     "PhoneMita": {
@@ -55,8 +63,12 @@
     },
     "Player": {
         "params": {
-            "pith": -8,
-            "speed": "-15%"
+            "rate": "0.4",               
+            "pith": -1,                   
+            "speaker_id": 3,             
+            "speech_rate": 0.7,             
+            "duration_noise_level": 0.1,
+            "scale": 1.0
         }
     },
     "ShortHairMita": {
