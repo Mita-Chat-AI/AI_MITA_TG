@@ -1,0 +1,16 @@
+aiogram
+pydantic_settings
+python-dotenv
+motor
+bson
+ollama
+loguru
+requests[socks]
+codetiming
+pydub
+opencv-python
+fluent.runtime
+aiogram_i18n
+pillow
+soundfile
+pedalboard
