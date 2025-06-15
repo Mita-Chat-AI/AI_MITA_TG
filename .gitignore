@@ -2,12 +2,11 @@ venv/
 .venv/
 __pycache__
 .env
-alembic
-db.sqlite3
 train.parquet
 11.parquet
 output.json
 users_history/*
 users_history/*
 .pkl
-
+agent/*
+memories/*
