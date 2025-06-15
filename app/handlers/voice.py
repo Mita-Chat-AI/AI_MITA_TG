@@ -63,7 +63,7 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
 
 
 
-async def voice_generate_тnew(user_id, text, timeout: int = 70) -> bytes | None:
+async def voice_generate_new(user_id, text, timeout: int = 70) -> bytes | None:
     db = DatabaseManager(user_id)
     voice_person = await db.get_voice_person()
 
@@ -129,29 +129,53 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     waiting_message = await message.reply(text=i18n.get("waiting_voice_message"), link_preview_options=LinkPreviewOptions(is_disabled=True))
 
     if await db.get_voice_engine() == 'vosk':
-        if await db.get_subscribe() == 1:
-            response = await voice_generate_тnew(user_id, text)
+        get_sub = await db.get_subscribe()
+
+        if get_sub.get("subscribe") == 1:
+            # Есть подписка — без ограничений
+            response = await voice_generate_new(user_id, text)
+        
         else:
-            await message.reply("""
-😔 Эх...
-У тебя пока нет подписки на новый голосовой движок. Стоит всего 170₽ в месяц (можно в другой валюте, если ты из параллельной вселенной).
+            free_voice = get_sub.get("free_voice", 0)
+            left_free_voice = get_sub.get("left_free_voice", 30)
 
-Хочешь активировать буст? Пиши сюда — astolfo_potyjniy.t.me [или @BugsCrazyMitaAIbot] Он всё оформит, без квестов и танцев с бубном.
+            print(f"free_voice: {free_voice} / left_free_voice: {left_free_voice}")
 
-Нет денег? Не переживай, придумаем что-то :)
-""")
-            await waiting_message.delete()
-            return
+            if free_voice >= left_free_voice:
+                await message.reply("""
+    У тебя закончились бесплатные генерации. Купить тут: https://t.me/DonateCrazyMitaAi/10
+                                    
+    А пока-что, переключаю тебя на бесплатный голосовой движок :)
+    """)
+                await db.set_voice_engine("edge")
+                await waiting_message.delete()
+                response = await voice_generate(user_id, text)  # на edge
+            else:
+                # есть ещё бесплатки
+                if free_voice == 0:
+                    await message.reply(
+    """
+    😉 | Вам предоставляется бесплатно 30 генераций на тестирование.
+    ┗ Это условно бесплатный движок: платный, но с бесплатным периодом
+
+    Купить можно за 190 руб/мес за безлим генерацию.
+    Подробнее: https://t.me/DonateCrazyMitaAi/10
+    """
+                    )
+
+                response = await voice_generate_new(user_id, text)
+                current_free_voice = await db.get_free_voice()
+                await db.set_free_voice(current_free_voice + 1)
     else:
         response = await voice_generate(user_id, text)
 
 
-
+    # Теперь отправляем ВСЕГДА после генерации:
     if not response:
         await waiting_message.delete()
         await message.reply(text=i18n.get("generate_voice_error"))
         return
-    
+
     builder = InlineKeyboardBuilder()
     builder.add(
         InlineKeyboardButton(
@@ -180,18 +204,19 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
         mime_type="audio/ogg",
         reply_markup=builder.as_markup(resize_keyboard=True)
     )
-    await message.reply(f"{await db.get_voice_engine()}")
 
+    print(config.log_channel_id.get_secret_value())
     await bot.send_voice(
         chat_id=config.log_channel_id.get_secret_value(),
         voice=BufferedInputFile(
                 response,
                 filename="voice.ogg"
             ), 
-            caption=f'{text}\n@{message.from_user.username}\n{message.from_user.id}'
+        caption=f'{text}\n@{message.from_user.username}\n{message.from_user.id}'
     )
 
     await db.set_voice_use(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 
 
 @voice_router.callback_query(IsSendVoice.is_send_voice)
