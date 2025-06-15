@@ -158,25 +158,26 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         
         return response
     else:
-        import json
+        # import json
 
-        try:
-            raw_response = json.loads(ai_response["response"])
-        except:
-            response = await message.reply(text=i18n.get("json_response_error"))
-            return response
+        # try:
+        # raw_response = json.loads(ai_response["response"])
+        # except:
+        #     response = await message.reply(text=i18n.get("json_response_error"))
+        #     return response
 
-        if raw_response.get("text") and raw_response["text"].strip():
-            response = await message.reply(f"<b>{raw_response['text']}</b>")
-            return response
+        # if raw_response.get("text") and raw_response["text"].strip():
+        response = await message.reply(f"<b>{ai_response['response']}</b>"
+)
+        return response
 
-        elif raw_response.get("reactions"):
-            from aiogram.types.reaction_type_emoji import ReactionTypeEmoji
+        # elif raw_response.get("reactions"):
+        #     from aiogram.types.reaction_type_emoji import ReactionTypeEmoji
 
-            reaction = [ReactionTypeEmoji(emoji=raw_response["reactions"])]
-            response = await bot.set_message_reaction(
-                chat_id=message.chat.id,
-                message_id=message.message_id,
-                reaction=reaction
-            )
-            return response
+        #     reaction = [ReactionTypeEmoji(emoji=raw_response["reactions"])]
+        #     response = await bot.set_message_reaction(
+        #         chat_id=message.chat.id,
+        #         message_id=message.message_id,
+        #         reaction=reaction
+        #     )
+        #     return response
