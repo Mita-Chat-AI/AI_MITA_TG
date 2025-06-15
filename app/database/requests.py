@@ -1,11 +1,15 @@
-from motor.motor_asyncio import AsyncIOMotorClient
 from loguru import logger
+from motor.motor_asyncio import AsyncIOMotorClient
+
+from ...config_reader import config
 from .db import UserModel, StatistikModel
 
-client = AsyncIOMotorClient("mongodb://localhost:27017")
-db = client["TEST"]
+
+client = AsyncIOMotorClient(config.mongo_db.get_secret_value())#"mongodb://localhost:27017")
+db = client[config.mongo_name.get_secret_value()]
 users_collection = db["users"]
 statistik_collection = db["statistiks"]
+subscribe_collection = db['subscribes']
 
 class DatabaseManager:
     def __init__(self, tg_id: int):
@@ -109,13 +113,33 @@ class DatabaseManager:
         return user.get("voice_engine") if user else "edge"
     
 
-    async def set_subscribe(self, subscribe: int) -> None:
-        await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"subscribe": subscribe}})
+    async def set_subscribe(self, subscribe: int, period: str = None) -> None:
+        """Установить или обновить подписку пользователя."""
+        await subscribe_collection.update_one(
+            {"tg_id": self.tg_id},
+            {"$set": {"subscribe": subscribe, "period": period}},
+            upsert=True  # если документа нет — создать
+        )
 
-    async def get_subscribe(self):
-        user = await users_collection.find_one({"tg_id": self.tg_id})
-        print(user.get("subscribe"))
-        return user.get("subscribe") if user else 0
+    async def get_subscribe(self) -> dict:
+        """Получить статус подписки пользователя. Если нет — вернуть дефолт."""
+        doc = await subscribe_collection.find_one({"tg_id": self.tg_id})
+        if doc:
+            return {
+                "subscribe": doc.get("subscribe", 0),
+                "period": doc.get("period", None),
+                "free_voice": doc.get("free_voice", 0),
+                "left_free_voice": doc.get("left_free_voice", 30)
+            }
+        return {"subscribe": 0, "period": None, "free_voice": 0, "left_free_voice": 30}
+
+
+    async def get_free_voice(self) -> int:
+        doc = await subscribe_collection.find_one({"tg_id": self.tg_id})
+        return doc.get("free_voice", 0) if doc else 0
+
+    async def set_free_voice(self, value: int):
+        await subscribe_collection.update_one({"tg_id": self.tg_id}, {"$set": {"free_voice": value}})
 
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]
