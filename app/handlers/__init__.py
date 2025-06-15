@@ -17,3 +17,4 @@ from .mailing import mailing_router
 from ..services.conv_timer import conv_timer_router
 from .configs.set_voice_engine import set_voice_engine_router
 from .configs.subscribe import subscribe_router
+from .tik_tak_toe import tik_tak_toe_router
