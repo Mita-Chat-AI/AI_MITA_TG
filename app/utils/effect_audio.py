@@ -9,7 +9,6 @@ async def apply_effects(audio_bytes: bytes) -> bytes:
 
     board = Pedalboard(
         [
-            Convolution(impulse_response_filename='AIO-MITA/app/utils/src_audio_effect/room.mp3', mix=1.0),
             Reverb(
                 room_size=0.001,
                 damping=0.8,
