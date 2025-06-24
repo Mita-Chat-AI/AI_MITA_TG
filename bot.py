@@ -70,12 +70,12 @@ async def main() -> None:
         is_history,
         voicemod_router,
         conditions_accept_router,
-        mailing_router,
         conv_timer_router,
         set_voice_engine_router,
         subscribe_router,
         tik_tak_toe_router,
 
+        mailing_router,
         ask_router,
         mita_router
         
