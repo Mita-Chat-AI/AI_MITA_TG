@@ -43,23 +43,20 @@ async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
     
     headers = {'Content-type': 'application/json'}
 
-    try:
-        response = await asyncio.to_thread(
-            requests.post,
-                url=config.voice_api.get_secret_value(),
-                json=params,
-                headers=headers,
-                proxies={'http': config.socks_proxy.get_secret_value()},
-                timeout=timeout  
-        )
-        response.raise_for_status()
-    
-        responce_effect = await apply_effects(response.content)
+    response = await asyncio.to_thread(
+        requests.post,
+            url="http://192.168.1.105:2020/api/v1/edge/get_edge",
+            json=params,
+            headers=headers,
+            #proxies={'http': config.socks_proxy.get_secret_value()},
+            timeout=timeout  
+    )
+    response.raise_for_status()
 
-        return responce_effect
+    responce_effect = await apply_effects(response.content)
 
-    except:
-        return None
+    return responce_effect
+
 
 
 
@@ -95,10 +92,11 @@ async def voice_generate_new(user_id, text, timeout: int = 70) -> bytes | None:
     try:
         response = await asyncio.to_thread(
             requests.post,
-                url="http://localhost:4000/api/v1/vosk/get_vosk",#config.voice_api.get_secret_value(),
+                url="http://192.168.1.105:4000/api/v1/vosk/get_vosk",#config.voice_api.get_secret_value(),
                 json=params,
                 headers=headers,
-                #proxies={'http': config.socks_proxy.get_secret_value()},
+                # proxies={'http': config.
+                #          socks_proxy.get_secret_value()},
                 timeout=timeout  
         )
         response.raise_for_status()
@@ -131,41 +129,40 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     if await db.get_voice_engine() == 'vosk':
         get_sub = await db.get_subscribe()
 
-        if get_sub.get("subscribe") == 1:
-            # Есть подписка — без ограничений
+        is_subscribed = get_sub.get("subscribe") == 1
+        free_voice = get_sub.get("free_voice")
+        left_free_voice = get_sub.get("left_free_voice")
+
+        print(f"free_voice: {free_voice} / left_free_voice: {left_free_voice}")
+
+        if is_subscribed:
+            # подписка есть — безлим
             response = await voice_generate_new(user_id, text)
-        
-        else:
-            free_voice = get_sub.get("free_voice", 0)
-            left_free_voice = get_sub.get("left_free_voice", 30)
 
-            print(f"free_voice: {free_voice} / left_free_voice: {left_free_voice}")
-
-            if free_voice >= left_free_voice:
-                await message.reply("""
+        elif free_voice >= left_free_voice:
+            # бесплатки закончились
+            await message.reply("""
     У тебя закончились бесплатные генерации. Купить тут: https://t.me/DonateCrazyMitaAi/10
-                                    
+
     А пока-что, переключаю тебя на бесплатный голосовой движок :)
-    """)
-                await db.set_voice_engine("edge")
-                await waiting_message.delete()
-                response = await voice_generate(user_id, text)  # на edge
-            else:
-                # есть ещё бесплатки
-                if free_voice == 0:
-                    await message.reply(
-    """
+            """)
+            await db.set_voice_engine("edge")
+            await waiting_message.delete()
+            response = await voice_generate(user_id, text)  # edge-генерация
+
+        else:
+            # есть бесплатные попытки
+            if free_voice == 0:
+                await message.reply("""
     😉 | Вам предоставляется бесплатно 30 генераций на тестирование.
     ┗ Это условно бесплатный движок: платный, но с бесплатным периодом
 
     Купить можно за 190 руб/мес за безлим генерацию.
     Подробнее: https://t.me/DonateCrazyMitaAi/10
-    """
-                    )
+    """)
 
-                response = await voice_generate_new(user_id, text)
-                current_free_voice = await db.get_free_voice()
-                await db.set_free_voice(current_free_voice + 1)
+            response = await voice_generate_new(user_id, text)
+            await db.increment_free_voice()  # <= заменим set на отдельный метод
     else:
         response = await voice_generate(user_id, text)
 
