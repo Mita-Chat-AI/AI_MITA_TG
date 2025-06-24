@@ -4,7 +4,7 @@
             "rate": "0.4",               
             "pith": 4,                   
             "speaker_id": 1,             
-            "speech_rate": 0.725,             
+            "speech_rate": 0.85,             
             "duration_noise_level": 0.6,
             "scale": 1.0
         }
@@ -30,8 +30,8 @@
             "rate": "0.4",               
             "pith": 9,                   
             "speaker_id": 2,             
-            "speech_rate": 0.8,             
-            "duration_noise_level": 0.7,
+            "speech_rate": 0.85,             
+            "duration_noise_level": 0.5,
             "scale": 1.0
         }
     },
@@ -50,15 +50,19 @@
             "rate": "0.4",               
             "pith": 5,                   
             "speaker_id": 1,             
-            "speech_rate": 0.7,             
+            "speech_rate": 0.70,             
             "duration_noise_level": 1.0,
             "scale": 1.0
         }
     },
     "PhoneMita": {
         "params": {
-            "pith": 8,
-            "speed": "+10%"
+            "rate": "0.2",               
+            "pith": 5,                   
+            "speaker_id": 1,             
+            "speech_rate": 0.80,             
+            "duration_noise_level": 0.1,
+            "scale": 1.0
         }
     },
     "Player": {
@@ -79,14 +83,22 @@
     },
     "TinyMita": {
         "params": {
-            "pith": 2,
-            "speed": "-10%"
+            "rate": "-5.0",               
+            "pith": 0,                   
+            "speaker_id": 0,             
+            "speech_rate": 0.50,             
+            "duration_noise_level": 0.7,
+            "scale": 1.0
         }
     },
     "GhostMita": {
         "params": {
-            "pith": -2,
-            "speed": "-10%"
+            "rate": "-2.0",               
+            "pith": 0,                   
+            "speaker_id": 0,             
+            "speech_rate": 0.50,             
+            "duration_noise_level": 0.7,
+            "scale": 1.0
         }
     }
 }
