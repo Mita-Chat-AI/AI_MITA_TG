@@ -10,12 +10,19 @@ from ..database.requests import DatabaseManager
 mailing_router = Router()
 
 chat_id_mailing = config.mailing_chat_id.get_secret_value()
+print(343443434)
 
-
-@mailing_router.message(F.chat.id == chat_id_mailing)
+@mailing_router.message(F.chat.id == -1002614374485)
 async def mailing(message: Message, bot: Bot):
     db = DatabaseManager(message.from_user.id)
     tg_ids = await db.get_all_tgid()
+
+    print(444444444444)
+
+    await bot.send_message(
+    chat_id=config.owner_id.get_secret_value(),
+    text=f"Начинаю отправку сообщений.."
+    )
 
     for user_id in tg_ids:
         try:
