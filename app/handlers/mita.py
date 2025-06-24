@@ -35,16 +35,24 @@ async def voice(message: Message, bot: Bot, db: DatabaseManager) -> str:
         return
 
 
-async def images(message: Message, bot: Bot) -> str | None:
+import os
+import cv2
+import tempfile
+from PIL import Image
+from aiogram.types import Message
+from aiogram import Bot
+
+
+async def images(message: Message, bot: Bot) -> tuple[str, str] | tuple[None, None]:
     try:
+        temp_dir = tempfile.gettempdir()
+
         if message.photo:
             file_id = message.photo[-1].file_id
-            file_path = f"/tmp/{file_id}.jpg"
+            file_path = os.path.join(temp_dir, f"{file_id}.jpg")
             await bot.download(file_id, destination=file_path)
 
-            prompt = message.caption
-            if not prompt:
-                prompt = "Дай свою реакцию на это фото очень кратко"
+            prompt = message.caption or "Дай свою реакцию на это фото очень кратко"
             return prompt, file_path
 
         elif message.sticker:
@@ -54,16 +62,17 @@ async def images(message: Message, bot: Bot) -> str | None:
                 file_ext = ".tgs"
             elif file.is_video:
                 file_ext = ".webm"
-            file_path = f"/tmp/{file.file_id}{file_ext}"
 
+            file_path = os.path.join(temp_dir, f"{file.file_id}{file_ext}")
             await bot.download(file, destination=file_path)
 
-            # Конвертация webm в webp, если это видео-стикер
+            # Обработка .webm -> .webp
             if file_ext == ".webm":
-                webp_path = f"/tmp/{file.file_id}_converted.webp"
+                webp_path = os.path.join(temp_dir, f"{file.file_id}_converted.webp")
                 cap = cv2.VideoCapture(file_path)
                 success, frame = cap.read()
                 cap.release()
+
                 if success:
                     image = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
                     image.save(webp_path, format="WEBP")
@@ -72,17 +81,17 @@ async def images(message: Message, bot: Bot) -> str | None:
                 else:
                     await message.reply("❌ | <b>Не удалось извлечь кадр из видео-стикера</b>")
                     return None, None
+
+            prompt = message.caption or "Дай свою реакцию на это фото очень кратко"
+            return prompt, file_path
+
         else:
             return None, None
-
-        prompt = message.caption
-        if not prompt:
-            prompt = "Дай свою реакцию на это фото очень кратко"
-        return prompt, file_path
 
     except Exception as e:
         await message.reply(f"❌ Не удалось скачать или обработать стикер: {e}")
         return None, None
+
 
 
 @mita_router.message(F.chat.type == ChatType.PRIVATE,  F.content_type.in_([ContentType.TEXT, ContentType.PHOTO, ContentType.VOICE, ContentType.STICKER]))
@@ -112,8 +121,32 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         # print(b64_image)
 
         if not file_path:
-            return
-        text = [{"role": "user", "content": prompt, 'images': [file_path]}]
+                            return
+        import base64
+
+        def encode_image_base64(image_path: str) -> str:
+            with open(image_path, "rb") as img_file:
+                return base64.b64encode(img_file.read()).decode('utf-8')
+
+        image_b64 = encode_image_base64(file_path)
+
+        text = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": prompt
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": f"data:image/jpeg;base64,{image_b64}"
+                        }
+                    }
+                ]
+            }
+        ]
 
     elif message.voice:
         prompt = await voice(message, bot, db)
