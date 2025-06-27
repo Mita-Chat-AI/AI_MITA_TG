@@ -139,7 +139,6 @@ class DatabaseManager:
             {"$inc": {"free_voice": 1}}
         )
 
-
     async def get_free_voice(self) -> int:
         doc = await subscribe_collection.find_one({"tg_id": self.tg_id})
         return doc.get("free_voice", 0) if doc else 0
@@ -149,7 +148,6 @@ class DatabaseManager:
 
     async def set_let_free_voice(self, value: int):
         await subscribe_collection.update_one({"tg_id": self.tg_id}, {"$set": {"left_free_voice": value}})
-
 
     async def get_all_tgid(self):
         return [doc["tg_id"] async for doc in users_collection.find({}, {"tg_id": 1, "_id": 0})]

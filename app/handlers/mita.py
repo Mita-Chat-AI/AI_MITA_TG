@@ -1,4 +1,5 @@
 import os
+import tempfile
 from io import BytesIO
 from datetime import datetime
 
@@ -21,6 +22,9 @@ from ..database.requests import DatabaseManager
 from ..services.config_service import UserConfigService
 
 
+
+
+
 mita_router = Router()
 
 
@@ -33,14 +37,6 @@ async def voice(message: Message, bot: Bot, db: DatabaseManager) -> str:
     except Exception as e:
         await message.reply(f"Кажется, я не смогла распознать твой голос  {e}")
         return
-
-
-import os
-import cv2
-import tempfile
-from PIL import Image
-from aiogram.types import Message
-from aiogram import Bot
 
 
 async def images(message: Message, bot: Bot) -> tuple[str, str] | tuple[None, None]:
