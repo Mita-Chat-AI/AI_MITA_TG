@@ -50,7 +50,7 @@
             "rate": "0.4",               
             "pith": 5,                   
             "speaker_id": 1,             
-            "speech_rate": 0.70,             
+            "speech_rate": 0.8,             
             "duration_noise_level": 1.0,
             "scale": 1.0
         }
