@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     voice_api: SecretStr
     socks_proxy: SecretStr
     model_ollama: SecretStr
-    ollama_api: SecretStr
+    lm_api: SecretStr
     max_ollama_chars: SecretStr
     memory_dir: SecretStr
     asr_api: SecretStr
