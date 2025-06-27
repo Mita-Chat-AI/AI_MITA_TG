@@ -42,12 +42,23 @@ async def set_voice_person(message: Message, command: CommandObject, state: FSMC
 
 
 @set_voice_engine_router.callback_query(Isvoice_engine.is_voice_engine)
-async def set_person(callback : CallbackQuery, state: FSMContext):
+async def set_person(callback: CallbackQuery, state: FSMContext):
     data = callback.data
     state_data = await state.get_data()
     user_id = state_data.get("user_id")
 
-    db  = DatabaseManager(user_id)
+    db = DatabaseManager(user_id)
     await db.set_voice_engine(data)
-    await callback.message.reply(f"✅ | <b>Вы успешно выбрали {person[data]} в качестве <u>Голосового движка</u>.</b>")
+
+    from ...database.db import SubscribeModel, subscribe_collection
+
+    # ⛔ Проверка: есть ли уже запись
+    existing = await subscribe_collection.find_one({"tg_id": user_id})
+    if not existing:
+        # ✅ Если нет — добавляем
+        await subscribe_collection.insert_one(SubscribeModel(tg_id=user_id).dict(by_alias=True))
+
+    await callback.message.reply(
+        f"✅ | <b>Вы успешно выбрали {person[data]} в качестве <u>Голосового движка</u>.</b>"
+    )
     await state.clear()
