@@ -51,7 +51,8 @@ class Mita:
             time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             t = Timer(name="class", text='{:0.4f}')
             t.start()
-            response = await ollama_instance.generate_in_thread(message_history)
+            response = await ollama_instance.generateWithMemory(message_history)
+
             print(response)
             t.stop()
 
