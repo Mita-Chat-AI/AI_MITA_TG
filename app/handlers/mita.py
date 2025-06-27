@@ -12,7 +12,7 @@ from aiogram.types import Message, BufferedInputFile
 
 from .reset import reset
 from ..services.asr import ASR
-from .voice import voice_generate
+from .voice import voice_generate, voice_generate_new
 from ...config_reader import config
 from ..mitacore.memory import Memory
 from ..utils.utils import memory_chars
@@ -180,7 +180,13 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
     )
 
     if await db.get_voice_mode() and len(ai_response.get('response')) > 10:
-        voice_buffer = await voice_generate(user_id, ai_response.get('response'))
+        voice_mode = await db.get_voice_engine()
+        print(voice_mode)
+        voice_buffer = None
+        if voice_mode == "vosk":
+            voice_buffer = await voice_generate_new(user_id, ai_response.get('response'))
+        else:
+             voice_buffer = await voice_generate(user_id, ai_response.get('response'))
         response = await message.reply_voice(
             BufferedInputFile(
                 voice_buffer,
