@@ -1,20 +1,20 @@
 import os
+import base64
 import tempfile
 from io import BytesIO
 from datetime import datetime
 
 import cv2
 from PIL import Image
+from loguru import logger
 from aiogram import Router, Bot, F
 from aiogram_i18n import I18nContext
 from aiogram.enums.chat_type import ChatType
 from aiogram.enums import ChatAction, ContentType
 from aiogram.types import Message, BufferedInputFile
 
-from .reset import reset
 from ..services.asr import ASR
 from .voice import VoiceGenerate
-from ...config_reader import config
 from ..mitacore.memory import Memory
 from ..utils.utils import memory_chars
 from ..mitacore.mita_handler import Mita
@@ -32,6 +32,7 @@ async def voice(message: Message, bot: Bot, db: DatabaseManager) -> str:
         await db.set_voice_recoregtion([datetime.now().strftime("%Y-%m-%d %H:%M:%S"), text.get('text')])
         return text.get('text')
     except Exception as e:
+        logger.error(f"Не смогла распознать голос пользователя {message.from_user.id} - {e}")
         await message.reply(f"Кажется, я не смогла распознать твой голос  {e}")
         return
 
@@ -82,6 +83,7 @@ async def images(message: Message, bot: Bot) -> tuple[str, str] | tuple[None, No
             return None, None
 
     except Exception as e:
+        logger.error(f"Не удалось распознать медиа {message.from_user.id} - {e}")
         await message.reply(f"❌ Не удалось скачать или обработать стикер: {e}")
         return None, None
 
@@ -114,8 +116,7 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         # print(b64_image)
 
         if not file_path:
-                            return
-        import base64
+            return
 
         def encode_image_base64(image_path: str) -> str:
             with open(image_path, "rb") as img_file:
@@ -162,6 +163,7 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
             text
         )
     except Exception as e:
+         logger.error(f"Мита почему то не ответила: пользователю {user_id} - {e}")
          await message.reply(text=i18n.get("json_response_error"))
          return
 
