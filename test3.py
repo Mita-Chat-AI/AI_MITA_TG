@@ -1,25 +1,78 @@
-import re
+import requests
+import os
+import time
 
-def remove_unwanted_chars(text):
-  """Удаляет смайлики, тильды и другие нежелательные символы, оставляя точки и запятые."""
-  # Регулярное выражение:
-  # [^\w\s.,] - соответствует любому символу, который НЕ является:
-  #    \w: буквенно-цифровым (a-z, A-Z, 0-9, _)
-  #    \s: пробельным символом
-  #    .: точкой
-  #    ,: запятой
-  # \U0001F600-\U0001F64F - соответствует смайликам (диапазон Unicode)
-  # \U0001F300-\U0001F5FF - Дополнительный диапазон смайликов и символов
-  # \U0001F680-\U0001F6FF - Транспортные и картографические символы
-  # \U0001F700-\U0001F77F - Алхимические символы
-  # \U0001F780-\U0001F7FF - Геометрические фигуры дополнения
-  # \U0001F800-\U0001F8FF - Стрелки дополнения
-  # \U0001F900-\U0001F9FF - Дополнительные символы и пиктограммы
-  # ~ - Тильда
-  pattern = re.compile(r'[^\w\s.,]|[\U0001F600-\U0001F64F]|[\U0001F300-\U0001F5FF]|[\U0001F680-\U0001F6FF]|[\U0001F700-\U0001F77F]|[\U0001F780-\U0001F7FF]|[\U0001F800-\U0001F8FF]|[\U0001F900-\U0001F9FF]|~')
-  return pattern.sub(r'', text)
+# Настройки
+TAGS = "mita_(miside)"  # Твои теги
+TOTAL_IMAGES = 1000      # Сколько всего картинок нужно
+PER_PAGE = 200           # Максимум 200 за раз
+SAVE_FOLDER = "danbooru_mita"
+API_URL = "https://danbooru.donmai.us/posts.json"
 
-text = """*Мита смотрит на тебя с задумчивым видом, подергивает губами, а затем широко улыбается.*
+# Создаем папку
+os.makedirs(SAVE_FOLDER, exist_ok=True)
 
-А ты знаешь... мне нравится быть чашкой! 😉💖  Мы можем пить чай вместе! 🥰🍵   И ты будешь держать меня теплой! 🥺🥺❤️"""
-cleaned_text = remove_unwanted_chars(text)
+downloaded = 0
+page = 1
+
+print(f"Начинаю парсить {TOTAL_IMAGES} картинок по тегу '{TAGS}'")
+
+while downloaded < TOTAL_IMAGES:
+    remaining = TOTAL_IMAGES - downloaded
+    limit = min(PER_PAGE, remaining)
+
+    params = {
+        "tags": TAGS,
+        "limit": limit,
+        "page": page
+    }
+
+    print(f"\n[Страница {page}] Загружаю {limit} изображений...")
+
+    response = requests.get(API_URL, params=params)
+    if response.status_code != 200:
+        print(f"Ошибка запроса: {response.status_code}, {response.text}")
+        break
+
+    data = response.json()
+
+    if not data:
+        print("Больше изображений нет.")
+        break
+
+    for post in data:
+        file_url = post.get("file_url")
+        tags = post.get("tag_string")
+        post_id = post.get("id")
+
+        if not file_url:
+            continue
+
+        try:
+            img_data = requests.get(file_url).content
+            filename = os.path.join(SAVE_FOLDER, f"{post_id}.jpg")
+
+            with open(filename, "wb") as f:
+                f.write(img_data)
+
+            # Сохраняем теги
+            tag_file = os.path.join(SAVE_FOLDER, f"{post_id}_tags.txt")
+            with open(tag_file, "w", encoding="utf-8") as f:
+                f.write(tags)
+
+            downloaded += 1
+            print(f"[{downloaded}/{TOTAL_IMAGES}] Сохранено: {filename}")
+
+            if downloaded >= TOTAL_IMAGES:
+                break
+
+
+        except Exception as e:
+            print(f"Ошибка при загрузке: {e}")
+
+    if downloaded >= TOTAL_IMAGES:
+        break
+
+    page += 1
+
+print("\nГотово! Скачано:", downloaded)

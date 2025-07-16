@@ -26,7 +26,6 @@ class DatabaseManager:
         user = await users_collection.find_one({"tg_id": self.tg_id})
         return user.get("is_blocked", False) if user else False
 
-
     async def set_blocked_user(self, blocked: bool) -> bool:
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"is_blocked": blocked}})
         return await self.get_is_blocked_user()
@@ -54,7 +53,6 @@ class DatabaseManager:
 
     async def set_voice_recoregtion(self, new_voice_recoregtion: str) -> None:
         await statistik_collection.update_one({"tg_id": self.tg_id}, {"$push": {"voice_recoregtion": new_voice_recoregtion}})
-
 
     async def set_system_prompt(self, system_prompt: str) -> None:
         await users_collection.update_one({"tg_id": self.tg_id}, {"$set": {"system_prompt": system_prompt}})

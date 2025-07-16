@@ -26,7 +26,9 @@ from .app.handlers import (
     conv_timer_router,
     set_voice_engine_router,
     subscribe_router,
-    tik_tak_toe_router
+    tik_tak_toe_router,
+    config_voice_engine_router,
+    image_generate_router
 )
 from .app.database.db import async_main
 from .config_reader import config
@@ -74,6 +76,8 @@ async def main() -> None:
         set_voice_engine_router,
         subscribe_router,
         tik_tak_toe_router,
+        config_voice_engine_router,
+        image_generate_router,
 
         mailing_router,
         ask_router,

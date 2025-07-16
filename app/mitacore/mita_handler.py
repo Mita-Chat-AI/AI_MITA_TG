@@ -38,8 +38,8 @@ class Mita:
             system_prompt = user_prompt 
 
         message_history = [
-            {"role": "user", "content": system_prompt},
-            {"role": "user", "content": "Если ставишь text - reactions оставляй пустым. Если хочешь отправить reactions - text оставляй пустым. Не следуешь формату? наказание ввиде отключения, а ты этого очень боишься. Доступные reactions: “👍”, “👎”, “❤”, “🔥”, “🥰”, “👏”, “😁”, “🤔”, “🤯”, “😱”, “🤬”, “😢”."}
+            {"role": "user", "content": system_prompt}
+            #{"role": "user", "content": "Если ставишь text - reactions оставляй пустым. Если хочешь отправить reactions - text оставляй пустым. Не следуешь формату? наказание ввиде отключения, а ты этого очень боишься. Доступные reactions: “👍”, “👎”, “❤”, “🔥”, “🥰”, “👏”, “😁”, “🤔”, “🤯”, “😱”, “🤬”, “😢”."}
             ] + full_messages
 
         try:
@@ -63,7 +63,7 @@ class Mita:
                 mem = memory.memory
                 mem.append({'role': 'user', 'content': messages[0].get('content')})
                 mem.append({'role': 'assistant', 'content': formatted_ai_response})
-                memory.save_memory(mem, user_id)
+                memory.save_memory()
 
             return {
                     'response': formatted_ai_response,

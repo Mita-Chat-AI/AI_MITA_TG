@@ -2,8 +2,6 @@ aiogram
 pydantic_settings
 python-dotenv
 motor
-bson
-ollama
 loguru
 requests[socks]
 codetiming
@@ -14,3 +12,7 @@ aiogram_i18n
 pillow
 soundfile
 pedalboard
+audioop-lts
+openai
+comfy_api_simplified
+websockets

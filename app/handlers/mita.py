@@ -13,16 +13,13 @@ from aiogram.types import Message, BufferedInputFile
 
 from .reset import reset
 from ..services.asr import ASR
-from .voice import voice_generate, voice_generate_new
+from .voice import VoiceGenerate
 from ...config_reader import config
 from ..mitacore.memory import Memory
 from ..utils.utils import memory_chars
 from ..mitacore.mita_handler import Mita
 from ..database.requests import DatabaseManager
 from ..services.config_service import UserConfigService
-
-
-
 
 
 mita_router = Router()
@@ -152,18 +149,21 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
     
     user_chars, mita_chars = await memory_chars(memory)
 
-    if user_chars + mita_chars > int(config.max_ollama_chars.get_secret_value()):
-        await reset(message, i18n)
-        return
+    if user_chars + mita_chars > int(2000):
+        Memory(user_id).floating_window()
 
     await bot.send_chat_action(chat_id=message.chat.id, action=ChatAction.TYPING)
     await db.set_conv(1)
 
-    ai_response = await mita.call_llm(
-        user_id,
-        memory,
-        text
-    )
+    try:    
+        ai_response = await mita.call_llm(
+            user_id,
+            memory,
+            text
+        )
+    except Exception as e:
+         await message.reply(text=i18n.get("json_response_error"))
+         return
 
     user_chars, mita_chars = await memory_chars(Memory(user_id).memory)
     all_chars = user_chars+mita_chars
@@ -179,10 +179,12 @@ async def mita(message: Message, bot: Bot, i18n: I18nContext) -> Message:
         voice_mode = await db.get_voice_engine()
         print(voice_mode)
         voice_buffer = None
+        voice_generate = VoiceGenerate(user_id)
+
         if voice_mode == "vosk":
-            voice_buffer = await voice_generate_new(user_id, ai_response.get('response'))
+             voice_buffer = await voice_generate.vosk_generate(ai_response.get('response'))
         else:
-             voice_buffer = await voice_generate(user_id, ai_response.get('response'))
+             voice_buffer = await voice_generate.egde_generate(ai_response.get('response'))
         response = await message.reply_voice(
             BufferedInputFile(
                 voice_buffer,

@@ -5,10 +5,8 @@ from aiogram.enums.chat_type import ChatType
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types import Message, InlineKeyboardButton, CallbackQuery
 
-
-from ...database.requests import DatabaseManager
-
 from ...entities import VoiceModState
+from ...database.requests import DatabaseManager
 
 
 voicemod_router = Router()
@@ -58,9 +56,7 @@ async def set_mod(callback : CallbackQuery, state: FSMContext):
     if user_id:
         try:
             db = DatabaseManager(user_id)
-            # --- ПРАВИЛЬНАЯ ПЕРЕДАЧА В БД ---
             await db.set_voice_mode(new_voice_mode_state)
-
 
             feedback_message = person[new_voice_mode_state].replace("ить", "ен")
             await callback.answer(f"Статус обновлен: {feedback_message}")

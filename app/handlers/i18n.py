@@ -1,25 +1,23 @@
 from aiogram import Router
 from aiogram.fsm.context import FSMContext
+from aiogram_i18n import I18nContext, LazyProxy
 from aiogram.types import CallbackQuery, Message
 from aiogram.filters import Command, CommandStart
-from aiogram_i18n import I18nContext, LazyProxy
 from aiogram_i18n.types import InlineKeyboardButton
 from aiogram_i18n.utils.language_inline_keyboard import LanguageInlineMarkup
 
-from ..database.requests import DatabaseManager
 from .start import start
+from ..database.requests import DatabaseManager
 
 
 i18n_router = Router()
 
-#async def start(message: Message, i18n: I18nContext, state: FSMContext) -> None:
 
 lang_kb = LanguageInlineMarkup(
     key="lang_button",
     hide_current=False,
     keyboard=[[InlineKeyboardButton(text=LazyProxy("back"), callback_data="back")]],
 )
-
 
 
 @i18n_router.callback_query(lang_kb.filter)

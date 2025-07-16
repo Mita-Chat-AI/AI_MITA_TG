@@ -2,12 +2,10 @@ import asyncio
 import pickle
 import random
 from collections import defaultdict
-
-from aiogram import Bot, Dispatcher, types, Router
+from aiogram import Bot, Router, types
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-
 from pathlib import Path
 
 tik_tak_toe_router = Router()
@@ -32,15 +30,16 @@ class QLearningAgent:
         return random.choice(max_actions)
 
     def learn(self, state, action, reward, next_state, next_actions):
-        future_q = 0
-        if next_actions:
-            future_q = max([self.get_q(next_state, a) for a in next_actions])
+        future_q = max([self.get_q(next_state, a) for a in next_actions], default=0)
         old_q = self.get_q(state, action)
         self.q[(state, action)] = old_q + self.alpha * (reward + self.gamma * future_q - old_q)
 
-
+# Путь для хранения агентов
 AGENT_DIR = Path(__file__).resolve().parent.parent.parent / "agent"
-AGENT_DIR.mkdir(parents=True, exist_ok=True)  # создаёт папку, если её нет
+AGENT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Игры по (chat_id, user_id)
+GAMES = {}
 
 def load_agent(user_id):
     agent_path = AGENT_DIR / f"{user_id}_agent.pkl"
@@ -55,86 +54,65 @@ def save_agent(user_id, agent):
     with open(agent_path, 'wb') as f:
         pickle.dump(agent, f)
 
-# Game state
-GAMES = {}
-
 def initial_state():
     return [' '] * 9
 
-# Helpers
 def check_winner(state):
-    wins = [(0,1,2), (3,4,5), (6,7,8),
-            (0,3,6), (1,4,7), (2,5,8),
-            (0,4,8), (2,4,6)]
+    wins = [(0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6)]
     for i, j, k in wins:
         if state[i] == state[j] == state[k] and state[i] != ' ':
             return state[i]
-    if ' ' not in state:
-        return 'Draw'
-    return None
+    return 'Draw' if ' ' not in state else None
 
 def render_board(state):
-    return '\n'.join([' | '.join(state[i:i+3]) for i in range(0,9,3)])
+    return '\n'.join([' | '.join(state[i:i+3]) for i in range(0, 9, 3)])
 
 def available_actions(state):
     return [i for i, val in enumerate(state) if val == ' ']
 
-# Telegram handlers
-
 @tik_tak_toe_router.message(Command("cubic"))
 async def start_game(message: types.Message, bot: Bot):
-    chat_id = message.chat.id
-    user_id = message.from_user.id
+    chat_id, user_id = message.chat.id, message.from_user.id
 
-    state = initial_state()
-    agent = load_agent(user_id)
-
-    GAMES[chat_id] = {
-        'state': state,
-        'agent': agent,
-        'owner_id': user_id
+    GAMES[(chat_id, user_id)] = {
+        'state': initial_state(),
+        'agent': load_agent(user_id)
     }
 
-    await send_board(chat_id, "Ваш ход!", bot)
+    await send_board(chat_id, user_id, "Ваш ход!", bot)
 
-
-async def send_board(chat_id, text, bot: Bot, message: types.Message = None):
-    state = GAMES[chat_id]['state']
+async def send_board(chat_id, user_id, text, bot: Bot, message: types.Message = None):
+    state = GAMES[(chat_id, user_id)]['state']
     builder = InlineKeyboardBuilder()
+
     for i in range(9):
         label = state[i] if state[i] != ' ' else str(i + 1)
         builder.button(text=label, callback_data=str(i))
     builder.adjust(3)
 
     board_text = text + '\n' + render_board(state)
+    
     if message:
         try:
             await message.edit_text(board_text, reply_markup=builder.as_markup())
         except Exception:
             msg = await bot.send_message(chat_id, board_text, reply_markup=builder.as_markup())
-            GAMES[chat_id]['message_id'] = msg.message_id
+            GAMES[(chat_id, user_id)]['message_id'] = msg.message_id
     else:
         msg = await bot.send_message(chat_id, board_text, reply_markup=builder.as_markup())
-        GAMES[chat_id]['message_id'] = msg.message_id
-
+        GAMES[(chat_id, user_id)]['message_id'] = msg.message_id
 
 @tik_tak_toe_router.callback_query(lambda c: c.data and c.data.isdigit())
 async def handle_move(callback_query: types.CallbackQuery, bot: Bot):
-    chat_id = callback_query.message.chat.id
-    user_id = callback_query.from_user.id
+    chat_id, user_id = callback_query.message.chat.id, callback_query.from_user.id
+    key = (chat_id, user_id)
 
-    data = GAMES.get(chat_id)
-
-    if not data:
+    if key not in GAMES:
         await callback_query.answer("Начните новую игру командой /cubic", show_alert=True)
         return
 
-    if data['owner_id'] != user_id:
-        await callback_query.answer("Вы мешаете другому игроку", show_alert=True)
-        return
-
     idx = int(callback_query.data)
-    state = data['state']
+    state = GAMES[key]['state']
 
     if state[idx] != ' ':
         await callback_query.answer("Недопустимый ход!")
@@ -142,43 +120,35 @@ async def handle_move(callback_query: types.CallbackQuery, bot: Bot):
 
     state[idx] = 'X'
     winner = check_winner(state)
+
     if winner:
-        await end_game(chat_id, winner, callback_query, bot)
+        await end_game(chat_id, user_id, winner, callback_query, bot)
         return
 
-    agent = data['agent']
+    agent = GAMES[key]['agent']
     action = agent.choose_action(tuple(state), available_actions(state))
-    next_state = state.copy()
-    next_state[action] = 'O'
-    agent.learn(tuple(state), action, 0, tuple(next_state), available_actions(next_state))
+
     state[action] = 'O'
+    agent.learn(tuple(state), action, 0, tuple(state), available_actions(state))
+
     winner = check_winner(state)
     if winner:
-        await end_game(chat_id, winner, callback_query, bot)
+        await end_game(chat_id, user_id, winner, callback_query, bot)
         return
 
-    await send_board(chat_id, "Ваш ход!", bot, message=callback_query.message)
+    await send_board(chat_id, user_id, "Ваш ход!", bot, message=callback_query.message)
     await callback_query.answer()
 
+async def end_game(chat_id, user_id, winner, callback_query, bot: Bot):
+    msg = {"Draw": "Ничья!", "X": "Вы победили!", "O": "ИИ победил!"}.get(winner, "Игра окончена")
+    reward = {"Draw": 0.5, "X": -1, "O": 1}.get(winner, 0)
 
-async def end_game(chat_id, winner, callback_query, bot: Bot):
-    if winner == 'Draw':
-        msg = "Ничья!"
-        reward = 0.5
-    elif winner == 'X':
-        msg = "Вы победили!"
-        reward = -1
-    else:
-        msg = "ИИ победил!"
-        reward = 1
+    state = tuple(GAMES[(chat_id, user_id)]['state'])
+    agent = GAMES[(chat_id, user_id)]['agent']
 
-    data = GAMES[chat_id]
-    agent = data['agent']
-    user_id = data['owner_id']
-    state = tuple(data['state'])
     agent.learn(state, None, reward, None, [])
     save_agent(user_id, agent)
 
     await bot.send_message(chat_id, msg + '\n' + render_board(state))
-    del GAMES[chat_id]
+    GAMES.pop((chat_id, user_id), None)
     await callback_query.answer()

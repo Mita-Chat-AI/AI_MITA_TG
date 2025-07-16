@@ -29,7 +29,7 @@ person = {
 
 
 
-@voice_person_router.message(Command("set_person", "gg"), F.chat.type == ChatType.PRIVATE)
+@voice_person_router.message(Command("set_person"), F.chat.type == ChatType.PRIVATE)
 async def set_voice_person(message: Message, command: CommandObject, state: FSMContext):
     args = command.args
 
@@ -54,7 +54,6 @@ async def set_voice_person(message: Message, command: CommandObject, state: FSMC
             await message.reply(f"✅ | <b>Вы успешно выбрали {person[args]} в качестве персонажа.</b>")
         else:
             await message.reply("К сожалению, я не нашла такого голоса :)")
-
 
 
 @voice_person_router.callback_query(PersonState.wait_person)

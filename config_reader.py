@@ -1,12 +1,14 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import SecretStr
-
 from pathlib import Path
+
+from pydantic import SecretStr
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
 
 class Settings(BaseSettings):
     bot_token: SecretStr
     owner_id: SecretStr
-    voice_api: SecretStr
+    edge_api: SecretStr
+    vosk_api: SecretStr
     socks_proxy: SecretStr
     model_ollama: SecretStr
     lm_api: SecretStr

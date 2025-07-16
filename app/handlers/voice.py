@@ -1,112 +1,146 @@
-import asyncio
-import requests
-from types import SimpleNamespace
+import os
+import json
+import httpx
+from pathlib import Path
+from loguru import logger
 from datetime import datetime
+from types import SimpleNamespace
 
-
-from aiogram_i18n import I18nContext
 from aiogram import Router, Bot, F
-from aiogram.utils.keyboard import InlineKeyboardBuilder
+from aiogram_i18n import I18nContext
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters.command import Command, CommandObject
 from aiogram.types import Message, BufferedInputFile, LinkPreviewOptions, InlineKeyboardButton, CallbackQuery
 
 from ..entities import IsSendVoice
 from ...config_reader import config
+from ..utils.effect_audio import apply_effects
 from ..database.requests import DatabaseManager
 from ..services.voice_person import VoicePerson
 from ..utils.utils import remove_unwanted_chars
-from ..utils.effect_audio import apply_effects
 
 
 voice_router = Router()
 
 
-async def voice_generate(user_id, text, timeout: int = 30) -> bytes | None:
-    db = DatabaseManager(user_id)
-    voice_person = await db.get_voice_person()
-
-    pith = 8
-    speed = "+10%"
-    get_params_voise_person = await VoicePerson(voice_person, "persons.json").get_params()
-    if isinstance(get_params_voise_person, SimpleNamespace):
-        pith = get_params_voise_person.pith
-        speed = get_params_voise_person.speed
-
-    params = {
-        "text": remove_unwanted_chars(text),
-        "person": voice_person,
-        "rate": speed,
-        "pith": pith
-    }
-
-    
-    headers = {'Content-type': 'application/json'}
-
-    response = await asyncio.to_thread(
-        requests.post,
-            url="http://192.168.1.105:2020/api/v1/edge/get_edge",
-            json=params,
-            headers=headers,
-            #proxies={'http': config.socks_proxy.get_secret_value()},
-            timeout=timeout  
-    )
-    response.raise_for_status()
-
-    responce_effect = await apply_effects(response.content)
-
-    return responce_effect
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CONFIG_PATH = os.path.join(Path(__file__).resolve().parent.parent.parent / "new_voice.json")
+USER_CONFIG_FOLDER = os.path.join(Path(__file__).resolve().parent.parent.parent / "voice_engine_parametres")
 
 
+def load_user_config(user_id: int, person_name: str):
+    user_path = os.path.join(USER_CONFIG_FOLDER, f"{user_id}.json")
+    person_name = person_name.strip()
+
+    if os.path.exists(user_path):
+        with open(user_path, "r") as f:
+            user_data = json.load(f)
+
+            print( user_data[person_name].get("params", user_data[person_name]))
+            return user_data[person_name].get("params", user_data[person_name])
+
+    with open(DEFAULT_CONFIG_PATH, "r") as f:
+        all_defaults = json.load(f)
+
+    return all_defaults[person_name]["params"]
 
 
-async def voice_generate_new(user_id, text, timeout: int = 70) -> bytes | None:
-    db = DatabaseManager(user_id)
-    voice_person = await db.get_voice_person()
+class VoiceGenerate:
+    def __init__(self, user_id):
+        self.user_id = user_id
+        self.db = DatabaseManager(user_id)
 
-    get_params_voise_person = await VoicePerson(voice_person, "new_persons.json").get_params()
-    if isinstance(get_params_voise_person, SimpleNamespace):
-        pith = get_params_voise_person.pith
+    async def egde_generate(self, text) -> bytes | None:
+        voice_person = await self.db.get_voice_person()
 
-        rate = get_params_voise_person.rate
-        pith = get_params_voise_person.pith
-        speaker_id = get_params_voise_person.speaker_id
-        speech_rate = get_params_voise_person.speech_rate
-        duration_noise_level = get_params_voise_person.duration_noise_level
-        scale = get_params_voise_person.scale
+        speed = "10%"
+
+        get_params_voise_person = await VoicePerson(voice_person, "persons.json").get_params()
+        if isinstance(get_params_voise_person, SimpleNamespace):
+            pith = get_params_voise_person.pith
+            speed = get_params_voise_person.speed
+            print(speed)
+
+        params = {
+            "text": remove_unwanted_chars(text),
+            "person": voice_person,
+            "rate": speed,
+            "pith": pith
+        }
+
+        headers = {'Content-type': 'application/json'}
 
 
-    params = {
-        "text": remove_unwanted_chars(text),
-        "person": voice_person,
-        "rate": rate,
-        "pith": pith,
-        "speaker_id": speaker_id,
-        "speech_rate": speech_rate,
-        "duration_noise_level": duration_noise_level,
-        "scale": scale
-
-    }
-    headers = {'Content-type': 'application/json'}
-
-    try:
-        response = await asyncio.to_thread(
-            requests.post,
-                url="http://192.168.1.105:4000/api/v1/vosk/get_vosk",#config.voice_api.get_secret_value(),
-                json=params,
-                headers=headers,
-                # proxies={'http': config.
-                #          socks_proxy.get_secret_value()},
-                timeout=timeout  
+        response = await self._send_param(
+            url=config.edge_api.get_secret_value(),
+            params=params,
+            headers=headers
         )
-        response.raise_for_status()
-    
-        responce_effect = await apply_effects(response.content)
-        print(responce_effect)
 
+        if response is None:
+            return None
+        responce_effect = await apply_effects(response.content)
         return responce_effect
-    except:
-        return None
+
+
+    async def vosk_generate(self, text) -> bytes | None:
+        voice_person = await self.db.get_voice_person()
+
+        user_config = load_user_config(self.user_id, voice_person)
+
+        pith = user_config.get("pith")
+        rate = user_config.get("rate")
+        speaker_id = user_config.get("speaker_id")
+        speech_rate = user_config.get("speech_rate")
+        duration_noise_level = user_config.get("duration_noise_level")
+        scale = user_config.get("scale")
+
+        params = {
+            "text": remove_unwanted_chars(text),
+            "person": voice_person,
+            "rate": rate,
+            "pith": pith,
+            "speaker_id": speaker_id,
+            "speech_rate": speech_rate,
+            "duration_noise_level": duration_noise_level,
+            "scale": scale
+
+        }
+        headers = {'Content-type': 'application/json'}
+
+        response = await self._send_param(
+            url=config.edge_api.get_secret_value(),
+            params=params,
+            headers=headers
+        )
+        if response is None:
+            return None
+        
+        responce_effect = await apply_effects(response.content)
+        return responce_effect
+
+
+    async def _send_param(self, url, params, headers, timeout=30):
+        try:
+            proxy_url = config.socks_proxy.get_secret_value()
+
+            transport = httpx.AsyncHTTPTransport(
+                proxy=proxy_url
+            )
+
+            async with httpx.AsyncClient(transport=transport, timeout=timeout) as client:
+                response = await client.post(
+                    url=config.edge_api.get_secret_value(),
+                    json=params,
+                    headers={"Content-type": "application/json"}
+                )
+                response.raise_for_status()
+                return response
+        except Exception as e:
+            logger.error(f"Voice generation failed: {e}")
+            return None
+
 
 
 @voice_router.message(Command("voice"))
@@ -114,6 +148,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     user_id = message.from_user.id
 
     db = DatabaseManager(user_id)
+    voice_generate = VoiceGenerate(user_id)  
 
     text = command.args
     if not text:
@@ -137,7 +172,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
 
         if is_subscribed:
             # подписка есть — безлим
-            response = await voice_generate_new(user_id, text)
+            response = await voice_generate.vosk_generate(text)
 
         elif free_voice >= left_free_voice:
             # бесплатки закончились
@@ -148,7 +183,7 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
             """)
             await db.set_voice_engine("edge")
             await waiting_message.delete()
-            response = await voice_generate(user_id, text)  # edge-генерация
+            response = await voice_generate.egde_generate(text)
 
         else:
             # есть бесплатные попытки
@@ -161,13 +196,11 @@ async def voice(message: Message, command: CommandObject, state: FSMContext, bot
     Подробнее: https://t.me/DonateCrazyMitaAi/10
     """)
 
-            response = await voice_generate_new(user_id, text)
+            response = await voice_generate.vosk_generate(text)
             await db.increment_free_voice()  # <= заменим set на отдельный метод
     else:
-        response = await voice_generate(user_id, text)
+        response = await voice_generate.egde_generate(text)
 
-
-    # Теперь отправляем ВСЕГДА после генерации:
     if not response:
         await waiting_message.delete()
         await message.reply(text=i18n.get("generate_voice_error"))
