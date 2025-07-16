@@ -11,10 +11,14 @@ from asyncio import create_task, CancelledError
 
 image_generate_router = Router()
 
-characters = {
-    "Безумная Мита": "Evil Mita, 1girl, blue eyes, parted bangs, long hair, red hairband, blue scrunchie, hairband, low twintails, blue hair, ",
-    "Мила": "eyelashes, nose, short hair, bangs, blue eyes, black hair, hair ornament, ahoge, glasses, hairclip, black-framed eyewear",
-}
+
+import json
+from pathlib import Path
+
+with open(Path(__file__).resolve().parents[2] / "image/persons.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    characters = data["characters"]
+
 
 resolutions = {
     "Стандарт 1248x836": (1248, 836),
