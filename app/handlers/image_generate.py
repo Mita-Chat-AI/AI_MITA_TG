@@ -15,16 +15,17 @@ image_generate_router = Router()
 import json
 from pathlib import Path
 
-with open(Path(__file__).resolve().parents[2] / "image/persons.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
-    characters = data["characters"]
 
+def get_characters():
+    with open(Path(__file__).resolve().parents[2] / "image/persons.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+        characters = data["characters"]
+        return characters
 
-resolutions = {
-    "Стандарт 1248x836": (1248, 836),
-    "Вертикальное 832x1216": (832, 1216),
-    "Квадрат 1024x1024": (1024, 1024)
-}
+def get_resolutions():
+    with open(Path(__file__).resolve().parents[2] / "image/resolutions.json", "r", encoding="utf-8") as f:
+        return json.load(f)
+
 
 lora_mapping = {
     "Безумная Мита": "CrazyMita.safetensors",
@@ -50,7 +51,7 @@ async def start_generate(message: Message, command: CommandObject, state: FSMCon
 
     await state.update_data(
         description=arg,
-        character=characters["Безумная Мита"],
+        character=get_characters()["Безумная Мита"],
         character_name="Безумная Мита",
         resolution=(1248, 836),
         resolution_name="Стандарт 1248x836",
@@ -83,7 +84,7 @@ async def config_menu(callback: CallbackQuery, state: FSMContext, bot: Bot):
     data = callback.data
     if data == "pick_character":
         builder = InlineKeyboardBuilder()
-        for key in characters.keys():
+        for key in get_characters().keys():
             builder.add(InlineKeyboardButton(text=key, callback_data=f"char_{key}"))
         builder.adjust(1)
         await callback.message.edit_text("Выбери персонажа:", reply_markup=builder.as_markup())
@@ -91,7 +92,7 @@ async def config_menu(callback: CallbackQuery, state: FSMContext, bot: Bot):
 
     elif data == "pick_resolution":
         builder = InlineKeyboardBuilder()
-        for key in resolutions.keys():
+        for key in get_resolutions().keys():
             builder.add(InlineKeyboardButton(text=key, callback_data=f"res_{key}"))
         builder.adjust(1)
         await callback.message.edit_text("Выбери разрешение:", reply_markup=builder.as_markup())
@@ -126,19 +127,19 @@ async def set_cfg(message: Message, state: FSMContext):
 @image_generate_router.callback_query(GenStates.waiting_character)
 async def choose_character(callback: CallbackQuery, state: FSMContext):
     key = callback.data.replace("char_", "")
-    if key not in characters:
+    if key not in get_characters():
         await callback.answer("Ошибка выбора персонажа", show_alert=True)
         return
-    await state.update_data(character=characters[key], character_name=key)
+    await state.update_data(character=get_characters()[key], character_name=key)
     await return_to_main_menu(callback, state, f"Персонаж выбран: {key}")
 
 @image_generate_router.callback_query(GenStates.waiting_resolution)
 async def choose_resolution(callback: CallbackQuery, state: FSMContext):
     key = callback.data.replace("res_", "")
-    if key not in resolutions:
+    if key not in get_resolutions():
         await callback.answer("Ошибка выбора разрешения", show_alert=True)
         return
-    await state.update_data(resolution=resolutions[key], resolution_name=key)
+    await state.update_data(resolution=get_resolutions()[key], resolution_name=key)
     await return_to_main_menu(callback, state, f"Разрешение выбрано: {key}")
 
 @image_generate_router.callback_query(GenStates.generating)
