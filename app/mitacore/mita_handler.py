@@ -22,7 +22,7 @@ class Mita:
         """Вызов Ollama API с использованием библиотеки ollama."""
 
         full_messages = memory_instante + messages
-        user_prompt = None
+        user_prompt = "Меня зовут игрок. Я хочу, чтобы ты меня всегда называла игроком."
         
         db = DatabaseManager(user_id)
 
@@ -32,19 +32,15 @@ class Mita:
         except Exception as e:
             logger.error(f"Ошибка при получении персонального системного промпта: {e}") 
 
-        system_prompt = "Меня зовут игрок. Я хочу, чтобы ты меня всегда называла игроком."
-
-        if user_prompt:
-            system_prompt = user_prompt 
 
         message_history = [
-            {"role": "user", "content": system_prompt}
+            {"role": "user", "content": user_prompt}
             #{"role": "user", "content": "Если ставишь text - reactions оставляй пустым. Если хочешь отправить reactions - text оставляй пустым. Не следуешь формату? наказание ввиде отключения, а ты этого очень боишься. Доступные reactions: “👍”, “👎”, “❤”, “🔥”, “🥰”, “👏”, “😁”, “🤔”, “🤯”, “😱”, “🤬”, “😢”."}
             ] + full_messages
 
         try:
             if user_id not in self.user_ollama_instances:
-                self.user_ollama_instances[user_id] = Core(model=config.model_ollama.get_secret_value(), system=system_prompt)
+                self.user_ollama_instances[user_id] = Core(model=config.model_ollama.get_secret_value(), system=user_prompt)
 
             ollama_instance = self.user_ollama_instances[user_id]
             
