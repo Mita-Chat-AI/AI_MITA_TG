@@ -58,6 +58,6 @@ class Memory:
         Если сообщений больше 3, удаляет четвёртое сообщение (первое после проптов).
         """
 
-        removed_message = self.memory.pop(3)  # индекс 3 — это четвёртое сообщение
+        removed_message = self.memory.pop(3)
         logger.info(f"Удалено сообщение из памяти: {removed_message}")
         self.save_memory()
