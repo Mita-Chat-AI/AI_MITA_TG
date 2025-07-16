@@ -1,32 +1,30 @@
-import asyncio
+
 from typing import List, Dict
 
 from loguru import logger
-from ollama import AsyncClient
-from pydantic import BaseModel
+from openai import AsyncOpenAI
+# from pydantic import BaseModel
 
 from ...config_reader import config
-from openai import AsyncOpenAI
 
-class FriendInfo(BaseModel):
-    text: str
-    reactions: str
-
-def extract_json(content: str) -> str:
-    if content.strip().startswith("```"):
-        content = "\n".join(content.strip().splitlines()[1:-1])
-    return content
+# def extract_json(content: str) -> str:
+#     if content.strip().startswith("```"):
+#         content = "\n".join(content.strip().splitlines()[1:-1])
+#     return content
 
 
-class ResponseOutput(BaseModel):
-  text: str
-  reactions: str
+# class ResponseOutput(BaseModel):
+#   text: str
+#   reactions: str
+
 
 class Core:
     def __init__(
-            self,
-            model: str,
-            system: str = None) -> None:
+        self,
+        model: str,
+        system: str = None
+        ) -> None:
+
         self.model = model
         self.system = system
         self.client = AsyncOpenAI(base_url=config.lm_api.get_secret_value(), api_key="lm-studio")
@@ -47,6 +45,8 @@ class Core:
         str
             The assistant's response.
         '''
+
+        logger.info("Отправляю запрос к LLM")
 
         response = await self.client.chat.completions.create(
             model=self.model,
